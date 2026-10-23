@@ -1,0 +1,80 @@
+/* Clash Display */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/vendor/font-724f96e32432ca.woff2') format('woff2'),
+       url('/assets/vendor/font-23e3945dc615b7.woff') format('woff'),
+       url('/assets/vendor/font-58dc195f9c969b.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/vendor/font-eef35d7474cbab.woff2') format('woff2'),
+       url('/assets/vendor/font-a7b18ae9d66f06.woff') format('woff'),
+       url('/assets/vendor/font-5264b27766ec2b.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/vendor/font-52330a2edc3617.woff2') format('woff2'),
+       url('/assets/vendor/font-1fc7007f97dc5a.woff') format('woff'),
+       url('/assets/vendor/font-2026ef80444f89.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/assets/vendor/font-896fd2e0f0692b.woff2') format('woff2'),
+       url('/assets/vendor/font-7104c8abbb1e80.woff') format('woff'),
+       url('/assets/vendor/font-2a8f9df75a5028.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(/assets/vendor/font-5639371f108fd3.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(/assets/vendor/font-d8dc5a5f3c90f5.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(/assets/vendor/font-c14c6f78e26d1c.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(/assets/vendor/font-17dbcf71ea4dcf.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(/assets/vendor/font-c4c5cbe6fc3216.ttf) format('truetype');
+}

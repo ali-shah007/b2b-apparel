@@ -1,0 +1,81 @@
+import { chromium } from 'playwright';
+import assert from 'node:assert/strict';
+import {readFile,mkdir,rm} from 'node:fs/promises';
+const base=process.env.TEST_BASE_URL||'http://127.0.0.1:3000';
+const report=JSON.parse(await readFile('tools/mirror-report.json','utf8'));
+for(let i=0;i<report.pages.length;i+=12){await Promise.all(report.pages.slice(i,i+12).map(async route=>{const res=await fetch(base+route);assert.equal(res.status,200,route);assert.match(await res.text(),/TA Sports|TA SPORTS/,route);}));}
+console.log(`PASS: ${report.pages.length} page routes return branded HTML.`);
+const invalid=await fetch(base+'/contact/submit',{method:'POST',body:new FormData()});assert.equal(invalid.status,422);
+const wrongOrigin=await fetch(base+'/contact/submit',{method:'POST',headers:{origin:'https://other.example'},body:new FormData()});assert.equal(wrongOrigin.status,403);
+assert.equal((await fetch(base+'/.local/inquiries/requests.jsonl')).status,404);
+assert.equal((await fetch(base+'/not-a-real-page')).status,404);
+console.log('PASS: inquiry validation, origin protection, private storage and 404 handling.');
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+await mkdir('artifacts',{recursive:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000}});
+page.setDefaultTimeout(15000);
+const errors=[],bad=[],external=[];
+page.on('pageerror',e=>errors.push(e.message));
+page.on('response',r=>{if(r.status()>=400)bad.push(r.status()+' '+r.url());});
+page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:')&&!r.url().startsWith('blob:')&&!r.url().startsWith('https://www.instagram.com/'))external.push(r.url());});
+await page.goto(base+'/',{waitUntil:'networkidle'});
+await page.waitForFunction(()=>!document.body.classList.contains('is-preloading'),{timeout:30000});
+await page.screenshot({path:'artifacts/home-desktop.png'});
+assert.equal(await page.locator('.bigbee-logo__img').first().getAttribute('src'),'/assets/images/ta-sports-logo.svg');
+for(let i=0;i<12;i++){await page.mouse.wheel(0,500);await page.waitForTimeout(400);}
+assert.ok(await page.evaluate(()=>window.scene2Images?.filter(i=>i.complete&&i.naturalWidth>0).length===129),'All scene 2 frames loaded');
+assert.ok(await page.locator('#scene-2-canvas').evaluate(c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;for(let i=3;i<d.length;i+=400)if(d[i]>0)return true;return false;}),'Animation canvas rendered image pixels');
+await page.screenshot({path:'artifacts/home-animation.png'});
+for(const route of ['/bespoke-service','/our-expertise','/expertise/streetwear','/expertise/activewear','/expertise/sportswear','/expertise/outerwear','/expertise/workwear','/expertise/leather-wear','/expertise/swimwear','/expertise/accessories','/expertise/denim-wear','/solutions/production-process','/solutions/manufacturing-solutions','/solutions/oem-odm-services','/about-us','/about-us/client-reviews','/about-us/sustainability','/brand-hub/','/brand-hub/page/2/','/help/privacy-policy','/contact']){
+ await page.goto(base+route,{waitUntil:'networkidle'});
+ await page.waitForTimeout(200);
+ assert.ok((await page.locator('body').innerText()).length>200,route);
+ const broken=await page.locator('img').evaluateAll(imgs=>imgs.filter(img=>img.complete&&img.naturalWidth===0&&img.getAttribute('src')).map(img=>img.src));
+ assert.deepEqual(broken,[],route+' broken images');
+ if(['/bespoke-service','/expertise/streetwear','/brand-hub/','/contact'].includes(route))await page.screenshot({path:'artifacts/'+route.replaceAll('/','')+'-desktop.png'});
+}
+console.log('PASS: desktop homepage, scroll sequence and 22 representative pages render with intact images.');
+await page.locator('[name="full_name"]').fill('TA Sports Smoke Test');
+await page.locator('[name="email"]').fill('smoke@example.test');
+await page.locator('[name="phone"]').fill('+1 555 0100');
+await page.locator('#bigbee-contact-form [name="details"]').fill('Automated local inquiry validation; not a customer request.');
+await page.locator('#bigbee-contact-form button[type="submit"]').click();
+await page.waitForFunction(()=>document.querySelector('#bigbee-contact-form [role="status"]').textContent.includes('Your inquiry has been saved'));
+console.log('PASS: contact form submits and confirms durable local storage.');
+const trigger=page.locator('#bb-chat-trigger');
+if(await trigger.count())await trigger.click();
+else await page.locator('.bb-chat__launcher').click();
+await page.locator('[data-chat-action="sourcing-form"]').click();
+const sourcing=page.locator('#bb-sourcing-form');
+await sourcing.locator('[name="name"]').fill('TA Sports Sourcing Test');
+await sourcing.locator('[name="contact"]').fill('smoke@example.test');
+await sourcing.locator('[name="product_type"]').selectOption('Sportswear');
+await sourcing.locator('[name="quantity"]').fill('100');
+await sourcing.locator('[type="submit"]').click();
+await page.waitForFunction(()=>document.querySelector('#bb-sourcing-form [role="status"]').textContent.includes('Your inquiry has been saved'));
+console.log('PASS: sourcing panel opens, accepts requirements and saves an inquiry.');
+const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+mobile.on('pageerror',e=>errors.push(e.message));
+mobile.on('response',r=>{if(r.status()>=400)bad.push(r.status()+' '+r.url());});
+for(const route of ['/','/expertise/streetwear','/brand-hub/','/contact']){
+ await mobile.goto(base+route,{waitUntil:'networkidle'});
+ if(route==='/')await mobile.waitForFunction(()=>!document.body.classList.contains('is-preloading'));
+ await mobile.waitForTimeout(600);
+ assert.ok(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),route+' mobile overflow');
+ await mobile.screenshot({path:'artifacts/'+(route==='/'?'home':route.replaceAll('/',''))+'-mobile.png'});
+}
+await mobile.locator('#bigbee-hamburger').click();
+await mobile.waitForFunction(()=>document.querySelector('#bigbee-mobile-drawer').classList.contains('is-open'));
+await mobile.locator('#bigbee-drawer-close').click();
+console.log('PASS: four mobile layouts fit the viewport; menu opens and closes.');
+await browser.close();
+assert.deepEqual(errors,[],'Browser JavaScript errors');
+assert.deepEqual([...new Set(bad)],[],'Failed requests');
+assert.deepEqual([...new Set(external)],[],'Unexpected third-party network dependencies');
+console.log('PASS: no JavaScript errors, failed asset requests or unexpected third-party dependencies; Instagram testimonial embeds are intentional.');
+// Remove only inquiries submitted by this test; preserve all customer data and uploads.
+const store='.local/inquiries/requests.jsonl';
+const rows=(await readFile(store,'utf8')).trim().split('\n').filter(Boolean);
+const keep=rows.filter(row=>{const r=JSON.parse(row);return !(r.full_name==='TA Sports Smoke Test'&&r.details==='Automated local inquiry validation; not a customer request.')&&!(r.name==='TA Sports Sourcing Test'&&r.contact==='smoke@example.test');});
+const {writeFile}=await import('node:fs/promises');await writeFile(store,keep.length?keep.join('\n')+'\n':'',{mode:0o600});
+console.log('All smoke checks passed.');

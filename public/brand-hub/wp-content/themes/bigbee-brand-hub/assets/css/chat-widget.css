@@ -1,0 +1,768 @@
+/* BigBee floating contact widget. Intentionally isolated from style.css. */
+.bb-chat,
+.bb-chat * {
+    box-sizing: border-box;
+}
+
+.bb-chat [hidden] {
+    display: none !important;
+}
+
+.bb-chat {
+    --bb-chat-yellow: var(--bb-yellow, #ffc000);
+    --bb-chat-dark: var(--bb-dark, #272727);
+    --bb-chat-body: var(--bb-font-body, 'Roboto', sans-serif);
+    --bb-chat-display: var(--bb-font-display, 'Clash Display', sans-serif);
+    --bb-chat-keyboard-offset: 0px;
+    position: fixed;
+    right: max(24px, env(safe-area-inset-right));
+    bottom: calc(24px + env(safe-area-inset-bottom) + var(--bb-chat-keyboard-offset));
+    z-index: 1800;
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    font-family: var(--bb-chat-body);
+    color: var(--bb-chat-dark);
+}
+
+.bb-chat__launcher {
+    min-height: 48px;
+    padding: 6px 19px 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 8px;
+    background: linear-gradient(145deg, #2d2d2d, #1d1d1d);
+    color: #fff;
+    box-shadow: 0 15px 36px rgba(18, 18, 18, 0.28);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+    font-family: var(--bb-chat-display);
+    font-size: 0.94rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.28s ease,
+                background-color 0.28s ease;
+}
+
+.bb-chat__launcher-icon {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--bb-chat-yellow);
+    color: #222;
+    flex: 0 0 auto;
+}
+
+.bb-chat__online-dot {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #242424;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.17);
+}
+
+.bb-chat__panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 14px);
+    width: min(400px, calc(100vw - 32px));
+    max-height: min(680px, calc(var(--bb-chat-viewport-height, 100dvh) - 112px - env(safe-area-inset-top)));
+    border: 1px solid rgba(39, 39, 39, 0.1);
+    border-radius: 18px;
+    background: #f7f7f6;
+    box-shadow: 0 24px 70px rgba(18, 18, 18, 0.24);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform-origin: right bottom;
+    animation: bb-chat-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (min-width: 901px) {
+    .bb-chat__panel[data-view="sourcing-form"] {
+        width: clamp(680px, 50vw, 900px);
+    }
+}
+
+.bb-chat__header {
+    min-height: 58px;
+    padding: 0 13px 0 18px;
+    background: linear-gradient(135deg, #262626, #171717);
+    color: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.bb-chat__header h2 {
+    margin: 0;
+    color: #fff; /* Brand Hub: theme h1-h6 rule would otherwise force dark text */
+    font-family: var(--bb-chat-display);
+    font-size: 1.03rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+}
+
+.bb-chat__header-btn {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    color: #fff;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.bb-chat__back {
+    margin-left: -7px;
+}
+
+.bb-chat__body {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(39, 39, 39, 0.28) transparent;
+}
+
+.bb-chat__view {
+    padding: 18px;
+}
+
+.bb-chat__intro {
+    max-width: 290px;
+    margin: 0 auto 14px;
+    text-align: center;
+    color: #494949;
+    font-size: 0.82rem;
+    font-weight: 400 !important;
+    line-height: 1.45;
+}
+
+.bb-chat__options {
+    display: grid;
+    gap: 9px;
+}
+
+.bb-chat__option {
+    width: 100%;
+    min-height: 76px;
+    padding: 10px 13px;
+    border: 1px solid rgba(39, 39, 39, 0.07);
+    border-radius: 13px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(39, 39, 39, 0.075);
+    color: var(--bb-chat-dark);
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.24s ease,
+                box-shadow 0.24s ease;
+}
+
+.bb-chat__option-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #2e2e2e, #171717);
+    color: var(--bb-chat-yellow);
+}
+
+.bb-chat__option-icon--whatsapp {
+    color: #20cf67;
+}
+
+.bb-chat__option-copy {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.bb-chat__option-copy strong {
+    font-family: var(--bb-chat-display);
+    font-size: 0.93rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.bb-chat__option-copy small {
+    color: #5d5d5d;
+    font-size: 0.77rem;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.bb-chat__option-chevron {
+    color: #4c5360;
+    font-family: Arial, sans-serif;
+    font-size: 1.65rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.bb-chat__menu-status {
+    min-height: 0;
+    margin: 10px 4px 0;
+    color: #a2372a;
+    font-size: 0.76rem;
+    font-weight: 500 !important;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.bb-chat__menu-status:empty {
+    display: none;
+}
+
+.bb-chat__reply-note {
+    margin-top: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    color: #484c54;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.bb-chat__reply-note svg {
+    flex: 0 0 auto;
+    margin-top: 1px;
+}
+
+.bb-chat__view-heading {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 17px;
+}
+
+.bb-chat__mini-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    background: var(--bb-chat-dark);
+    color: var(--bb-chat-yellow);
+}
+
+.bb-chat__view-heading h3,
+.bb-chat__whatsapp h3,
+.bb-chat__success h3 {
+    margin: 0;
+    font-family: var(--bb-chat-display);
+    font-weight: 600;
+    line-height: 1.18;
+}
+
+.bb-chat__view-heading h3 {
+    font-size: 0.98rem;
+}
+
+.bb-chat__view-heading p {
+    margin: 3px 0 0;
+    color: #5f6268;
+    font-size: 0.75rem;
+    font-weight: 400 !important;
+    line-height: 1.4;
+}
+
+.bb-chat__form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px 10px;
+}
+
+.bb-chat__field {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+    color: #343434;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.bb-chat__field b {
+    color: #df4032;
+    font-weight: 700;
+}
+
+.bb-chat__field input,
+.bb-chat__field select,
+.bb-chat__field textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid rgba(39, 39, 39, 0.15);
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #272727;
+    font-family: var(--bb-chat-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.35;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bb-chat__field input,
+.bb-chat__field select {
+    height: 40px;
+    padding: 0 10px;
+}
+
+.bb-chat__field select {
+    padding-right: 28px;
+}
+
+.bb-chat__field textarea {
+    height: 72px;
+    min-height: 72px;
+    padding: 9px 10px;
+    resize: vertical;
+}
+
+.bb-chat__field input::placeholder,
+.bb-chat__field textarea::placeholder {
+    color: #9a9da3;
+}
+
+.bb-chat__upload {
+    margin-top: 13px;
+    padding: 10px 11px;
+    border: 1px dashed rgba(39, 39, 39, 0.24);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.72);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.bb-chat__upload input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.bb-chat__upload-icon {
+    color: var(--bb-chat-dark);
+    display: grid;
+    place-items: center;
+}
+
+.bb-chat__upload > span:last-child {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.bb-chat__upload strong {
+    overflow: hidden;
+    color: #333;
+    font-size: 0.76rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bb-chat__upload small {
+    color: #70737a;
+    font-size: 0.66rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.bb-chat__turnstile {
+    min-height: 0;
+    margin-top: 11px;
+    overflow: hidden;
+}
+
+.bb-chat__turnstile > p {
+    margin: 0;
+    color: #74777d;
+    font-size: 0.69rem;
+    font-weight: 400 !important;
+    line-height: 1.35;
+}
+
+.bb-chat__turnstile iframe {
+    max-width: 100%;
+}
+
+.bb-chat__form-status {
+    margin: 10px 0 0;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: 0.73rem;
+    font-weight: 500 !important;
+    line-height: 1.4;
+}
+
+.bb-chat__form-status[data-state="pending"] {
+    background: #fff5d1;
+    color: #6d5310;
+}
+
+.bb-chat__form-status[data-state="error"] {
+    background: #fff0ee;
+    color: #9b3025;
+}
+
+.bb-chat__submit,
+.bb-chat__whatsapp-btn,
+.bb-chat__secondary-btn {
+    min-height: 44px;
+    border: 0;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-family: var(--bb-chat-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+}
+
+.bb-chat__submit {
+    width: 100%;
+    margin-top: 11px;
+    background: var(--bb-chat-yellow);
+    color: #222;
+    box-shadow: 0 8px 18px rgba(255, 192, 0, 0.2);
+}
+
+.bb-chat__submit:disabled {
+    opacity: 0.62;
+    cursor: wait;
+}
+
+.bb-chat__whatsapp {
+    padding: 10px 2px 5px;
+    text-align: center;
+}
+
+.bb-chat__whatsapp-icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 17px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #20bd5f;
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(32, 189, 95, 0.22);
+}
+
+.bb-chat__whatsapp h3 {
+    font-size: 1.12rem;
+}
+
+.bb-chat__whatsapp > p {
+    max-width: 290px;
+    margin: 7px auto 18px;
+    color: #666a72;
+    font-size: 0.78rem;
+    font-weight: 400 !important;
+    line-height: 1.45;
+}
+
+.bb-chat__whatsapp-number {
+    min-height: 49px;
+    padding: 8px 13px;
+    border: 1px solid rgba(39, 39, 39, 0.13);
+    border-radius: 9px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.bb-chat__whatsapp-number span {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: #128c3e;
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.bb-chat__whatsapp-number strong {
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.bb-chat__whatsapp-btn {
+    margin-top: 12px;
+    background: #1dbe5d;
+    color: #fff;
+    box-shadow: 0 9px 20px rgba(29, 190, 93, 0.2);
+}
+
+.bb-chat__privacy-note {
+    display: block;
+    margin-top: 12px;
+    color: #74777d;
+    font-size: 0.68rem;
+}
+
+.bb-chat__success {
+    padding: 16px 7px 12px;
+    text-align: center;
+}
+
+.bb-chat__success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #e8f8ee;
+    color: #199d4e;
+}
+
+.bb-chat__success-label {
+    margin: 0 0 7px;
+    color: #199d4e;
+    font-family: var(--bb-chat-display);
+    font-size: 0.7rem;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.bb-chat__success h3 {
+    font-size: 1.22rem;
+}
+
+.bb-chat__success > p:not(.bb-chat__success-label) {
+    margin: 9px auto 18px;
+    color: #666a72;
+    font-size: 0.8rem;
+    font-weight: 400 !important;
+    line-height: 1.5;
+}
+
+.bb-chat__secondary-btn {
+    width: 100%;
+    background: var(--bb-chat-dark);
+    color: #fff;
+}
+
+.bb-chat__discard {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    padding: 26px;
+    background: rgba(247, 247, 246, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.bb-chat__discard strong {
+    font-family: var(--bb-chat-display);
+    font-size: 1.05rem;
+}
+
+.bb-chat__discard p {
+    margin: 7px 0 18px;
+    color: #666a72;
+    font-size: 0.78rem;
+    font-weight: 400 !important;
+    line-height: 1.45;
+}
+
+.bb-chat__discard > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.bb-chat__discard button {
+    min-height: 42px;
+    border: 1px solid rgba(39, 39, 39, 0.13);
+    border-radius: 8px;
+    background: #fff;
+    color: #272727;
+    font-family: var(--bb-chat-display);
+    font-size: 0.73rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bb-chat__discard button:last-child {
+    border-color: #272727;
+    background: #272727;
+    color: #fff;
+}
+
+.bb-chat :is(button, a, input, select, textarea):focus-visible,
+.bb-chat__upload:has(input:focus-visible) {
+    outline: 3px solid rgba(255, 192, 0, 0.52);
+    outline-offset: 2px;
+}
+
+@media (hover: hover) {
+    .bb-chat__launcher:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 19px 42px rgba(18, 18, 18, 0.34);
+    }
+
+    .bb-chat__option:hover {
+        transform: translateX(3px);
+        border-color: rgba(255, 192, 0, 0.62);
+        box-shadow: 0 10px 24px rgba(39, 39, 39, 0.1);
+    }
+
+    .bb-chat__header-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .bb-chat__submit:hover,
+    .bb-chat__whatsapp-btn:hover,
+    .bb-chat__secondary-btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Reserve the fixed launcher's corner in the fixed-reveal footer. */
+@media (min-width: 901px) {
+    body:has(> .bb-chat) .bigbee-footer-bottom {
+        padding-right: 185px;
+    }
+}
+
+@media (max-width: 900px) {
+    body:has(> .bb-chat) .bigbee-footer-bottom {
+        padding-bottom: 78px;
+    }
+}
+
+@media (max-width: 600px) {
+    .bb-chat {
+        right: max(12px, env(safe-area-inset-right));
+        bottom: calc(12px + env(safe-area-inset-bottom) + var(--bb-chat-keyboard-offset));
+        max-width: calc(100vw - 24px);
+    }
+
+    .bb-chat__launcher {
+        min-height: 48px;
+        padding: 6px 17px 6px 11px;
+    }
+
+    .bb-chat__launcher-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .bb-chat__panel {
+        width: calc(100vw - 24px);
+        max-height: calc(var(--bb-chat-viewport-height, 100dvh) - 86px - env(safe-area-inset-top));
+        border-radius: 16px;
+    }
+
+    .bb-chat__view {
+        padding: 15px;
+    }
+
+    .bb-chat__form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bb-chat__field input,
+    .bb-chat__field select,
+    .bb-chat__field textarea {
+        font-size: 16px;
+    }
+
+    .bb-chat__field textarea {
+        min-height: 84px;
+    }
+}
+
+@media (max-width: 380px) {
+    .bb-chat__option {
+        grid-template-columns: 44px 1fr auto;
+        gap: 9px;
+        padding-inline: 9px;
+    }
+
+    .bb-chat__option-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .bb-chat__option-copy small {
+        font-size: 0.71rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bb-chat__panel {
+        animation: none;
+    }
+
+    .bb-chat__launcher,
+    .bb-chat__option,
+    .bb-chat__header-btn,
+    .bb-chat__submit,
+    .bb-chat__whatsapp-btn,
+    .bb-chat__secondary-btn {
+        transition: none;
+    }
+}
+
+@keyframes bb-chat-panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

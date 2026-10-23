@@ -1,0 +1,2138 @@
+/* ==========================================================================
+   BIGBEE BRAND HUB — BASE STYLESHEET
+   Design tokens ported from about-us-html-template/style.css (BigBee main
+   site reference). Only the foundation needed for Brand Hub is kept here;
+   this file grows as header/footer/homepage/article templates are built.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Source of truth: about-us-html-template/style.css :root block.
+   -------------------------------------------------------------------------- */
+:root {
+	--bb-yellow: #FFC000;
+	--bb-yellow-glow: #FFD000;
+	--bb-dark: #272727;
+	--bb-white: #FFFFFF;
+	--bb-cream: #FBFAF7;
+	--bb-text-muted: #555555;
+	--bb-border-dark: rgba(39, 39, 39, 0.12);
+	--bb-border-light: rgba(255, 255, 255, 0.15);
+
+	--bb-font-display: 'Clash Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--bb-font-body: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+
+	--bb-content-max: 1440px;
+	--bb-nav-height: 80px;
+	--bb-page-gutter: 60px;
+	--bb-transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+	--bb-transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: var(--bb-dark);
+	/* Cream, not white: the fixed "reveal" footer (see .bigbee-footer-section
+	   and main.js's footer-height spacer) leaves a margin-bottom gap below
+	   short pages' content, and that gap shows the body background, not any
+	   section's own background. Cream keeps that gap feeling intentional
+	   instead of a stray white void before the yellow footer. */
+	background-color: var(--bb-cream);
+	min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	line-height: 1.15;
+	color: var(--bb-dark);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+button {
+	font-family: inherit;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT PRIMITIVES
+   -------------------------------------------------------------------------- */
+.bb-container {
+	width: 100%;
+	max-width: var(--bb-content-max);
+	margin: 0 auto;
+	padding: 0 var(--bb-page-gutter);
+}
+
+/* Full-bleed container used by the header/footer chrome (ported verbatim as
+   .bigbee-container so it matches the reference markup's class names). Its
+   own children cap their max-width individually (e.g. .bigbee-footer-container). */
+.bigbee-container {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0 var(--bb-page-gutter);
+}
+
+@media (max-width: 1280px) {
+	:root {
+		--bb-page-gutter: 32px;
+	}
+}
+
+@media (max-width: 1024px) {
+	:root {
+		--bb-page-gutter: 24px;
+	}
+}
+
+@media (max-width: 768px) {
+	:root {
+		--bb-page-gutter: 16px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   4. SHARED TEXT STYLES
+   -------------------------------------------------------------------------- */
+.bb-eyebrow {
+	display: inline-block;
+	font-family: var(--bb-font-body);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--bb-yellow);
+}
+
+/* WordPress-standard visually-hidden utility (not injected by core on the
+   frontend, so the theme defines it once and reuses it wherever accessible
+   context needs to be present without a visible element). */
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. BUTTON BASE
+   Full BigBee button variants (header CTA fill-swipe, yellow CTA, etc.) are
+   ported when the header/footer and homepage phases are built.
+   -------------------------------------------------------------------------- */
+.bb-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-family: var(--bb-font-body);
+	font-weight: 700;
+	font-size: 0.88rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	border-radius: 8px;
+	transition: color var(--bb-transition-smooth), transform var(--bb-transition-smooth),
+		background-color var(--bb-transition-fast), box-shadow var(--bb-transition-fast);
+	white-space: nowrap;
+}
+
+.bb-btn--dark {
+	background-color: var(--bb-dark);
+	color: var(--bb-white);
+	padding: 12px 22px;
+}
+
+/* --------------------------------------------------------------------------
+   6. SCAFFOLD CONTENT STYLES (foundation phase placeholder)
+   Generic, unstyled-feeling defaults for the article loop so index/single/
+   archive/search/404 templates are readable before the real editorial
+   design is built. Header/footer chrome below is the real, final design.
+   -------------------------------------------------------------------------- */
+.bb-main {
+	padding: 60px 0;
+	min-height: 40vh;
+}
+
+.bb-entry + .bb-entry {
+	margin-top: 40px;
+	padding-top: 40px;
+	border-top: 1px solid var(--bb-border-dark);
+}
+
+/* --------------------------------------------------------------------------
+   7. SITE HEADER & DESKTOP NAVIGATION
+   Ported from about-us-html-template/style.css sections 4-5. The reference
+   About Us page renders permanently in the "scrolled" (white/blurred)
+   state — it has no transparent hero behind it — so header.php always adds
+   the .scrolled class server-side. The base (non-.scrolled) transparent
+   state below is kept for any future template that does need it.
+   -------------------------------------------------------------------------- */
+.bigbee-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: var(--bb-nav-height);
+	z-index: 1000;
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bigbee-header.scrolled {
+	background-color: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bigbee-header__inner {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: var(--bb-content-max);
+	margin: 0 auto;
+}
+
+.bigbee-logo {
+	display: flex;
+	align-items: center;
+	user-select: none;
+}
+
+.bigbee-logo__img {
+	height: 44px;
+	width: auto;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.bigbee-nav {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.bigbee-nav__list {
+	display: flex;
+	align-items: center;
+	gap: 36px;
+	height: 100%;
+}
+
+.bigbee-nav__item {
+	position: relative;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.bigbee-nav__link {
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	font-size: 0.85rem;
+	letter-spacing: 0.08em;
+	color: var(--bb-dark);
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	padding: 10px 0;
+	transition: color var(--bb-transition-fast);
+}
+
+.bigbee-nav__link:hover,
+.bigbee-nav__item:hover > .bigbee-nav__link {
+	color: #272727;
+}
+
+/* Current-page (Brand Hub) indicator: color + a subtle underline accent —
+   deliberately NOT a font-weight change, so it never competes visually
+   with (or gets confused for) the hover state below. */
+.bigbee-nav__link[aria-current="page"] {
+	color: #272727;	
+}
+
+/* Rotating text roll hover animation.
+   Both text layers (the visible .bigbee-nav__roll-text and the incoming
+   ::before copy) are given identical font-family/size/weight/letter-spacing
+   /line-height explicitly, so the roll animates position only — never
+   weight — and nothing "jumps" bold when hover starts. */
+.bigbee-nav__roll {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 1.25em;
+	line-height: 1.25em;
+	vertical-align: middle;
+}
+
+.bigbee-nav__roll-text,
+.bigbee-nav__roll::before {
+	font-family: var(--bb-font-display);
+	font-size: 0.85rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	line-height: 1.25em;
+}
+
+.bigbee-nav__roll::before {
+	content: attr(data-text);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: inherit;
+	transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bigbee-nav__roll-text {
+	display: inline-block;
+	transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bigbee-nav__link:hover .bigbee-nav__roll-text {
+	transform: translateY(-100%);
+}
+
+.bigbee-nav__link:hover .bigbee-nav__roll::before {
+	transform: translateY(-100%);
+}
+
+.bigbee-nav__chevron {
+	transition: transform 0.25s ease;
+}
+
+.bigbee-nav__item--has-mega:hover .bigbee-nav__chevron,
+.bigbee-nav__item--has-mega:focus-within .bigbee-nav__chevron {
+	transform: rotate(180deg);
+}
+
+/* --------------------------------------------------------------------------
+   8. MEGA MENU PANELS (Our Expertise / Solutions / About Us)
+   -------------------------------------------------------------------------- */
+.bigbee-mega-menu {
+	position: fixed;
+	top: calc(var(--bb-nav-height) - 4px);
+	left: 50%;
+	transform: translateX(-50%) translateY(10px);
+	width: calc(100% - 40px);
+	max-width: 700px;
+	background-color: #F8F9FA;
+	color: var(--bb-dark);
+	border-radius: 20px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.14);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+	pointer-events: none;
+	z-index: 999;
+	padding: 16px;
+}
+
+.bigbee-nav__item--has-mega:hover .bigbee-mega-menu,
+.bigbee-nav__item--has-mega:focus-within .bigbee-mega-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(-50%) translateY(0);
+	pointer-events: auto;
+}
+
+.bigbee-mega-menu__container {
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	gap: 16px;
+	align-items: stretch;
+}
+
+.bigbee-mega-featured-card {
+	border-radius: 16px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	color: #FFFFFF;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	overflow: hidden;
+	min-height: 220px;
+}
+
+.bigbee-mega-featured-card__title {
+	font-family: var(--bb-font-display);
+	font-size: 1.2rem;
+	font-weight: 500;
+	margin-bottom: 4px;
+	color: #FFFFFF;
+	line-height: 1.2;
+	text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.bigbee-mega-featured-card__desc {
+	font-family: var(--bb-font-body);
+	font-size: 0.8rem;
+	color: rgba(255, 255, 255, 0.85);
+	line-height: 1.35;
+}
+
+.bigbee-mega-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 6px;
+}
+
+.bigbee-mega-menu--expertise {
+	width: 875px !important;
+	max-width: 875px !important;
+}
+
+.bigbee-mega-list--grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px 16px;
+}
+
+.bigbee-mega-item {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	text-decoration: none;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bigbee-mega-item:hover,
+.bigbee-mega-item:focus-visible {
+	background: rgba(255, 255, 255, 0.85);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.bigbee-mega-item__icon {
+	width: 42px;
+	height: 42px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+	flex-shrink: 0;
+}
+
+.bigbee-mega-item__content {
+	flex: 1;
+}
+
+.bigbee-mega-item__title {
+	font-family: var(--bb-font-display);
+	font-size: 0.95rem;
+	font-weight: 500;
+	color: #111827;
+	margin-bottom: 2px;
+	line-height: 1.2;
+}
+
+.bigbee-mega-item__desc {
+	font-family: var(--bb-font-body);
+	font-size: 0.78rem;
+	color: #6B7280;
+	font-weight: 400;
+	line-height: 1.3;
+}
+
+.bigbee-mega-item__arrow {
+	color: #D1D5DB;
+	transition: transform 0.2s ease, color 0.2s ease;
+	flex-shrink: 0;
+}
+
+.bigbee-mega-item:hover .bigbee-mega-item__arrow {
+	color: #111827;
+	transform: translateX(3px);
+}
+
+.bigbee-mega-item:hover .bigbee-mega-item__title {
+	font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   9. HEADER ACTIONS: CTA BUTTON, HAMBURGER
+   -------------------------------------------------------------------------- */
+.bigbee-header__actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.bigbee-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	font-family: var(--bb-font-body);
+	font-weight: 700;
+	font-size: 0.88rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	border-radius: 8px;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+		background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+	white-space: nowrap;
+}
+
+.bigbee-btn--header {
+	background-color: var(--bb-dark);
+	color: var(--bb-white);
+	padding: 12px 14px 12px 22px;
+}
+
+.bigbee-btn--header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	z-index: -1;
+	transform: translateY(100%);
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bigbee-btn--header:hover::before {
+	transform: translateY(0);
+}
+
+.bigbee-btn--header:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.bigbee-btn--header.bigbee-btn--full {
+	width: 100%;
+	padding: 14px;
+	justify-content: center;
+}
+
+.bigbee-btn__icon-box {
+	width: 24px;
+	height: 24px;
+	background-color: var(--bb-yellow);
+	color: var(--bb-dark);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.bigbee-btn--header:hover .bigbee-btn__icon-box {
+	transform: translate(2px, -2px) rotate(45deg);
+	background-color: #FFFFFF;
+}
+
+.bigbee-btn--header:hover .bigbee-btn__icon-box svg {
+	stroke: var(--bb-dark);
+}
+
+.bigbee-hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 28px;
+	height: 20px;
+	z-index: 1001;
+}
+
+.bigbee-hamburger span {
+	width: 100%;
+	height: 3px;
+	background-color: var(--bb-dark);
+	border-radius: 2px;
+	transition: all 0.3s ease;
+}
+
+.bigbee-hamburger.open span:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.bigbee-hamburger.open span:nth-child(2) {
+	opacity: 0;
+}
+
+.bigbee-hamburger.open span:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   10. MOBILE NAVIGATION DRAWER
+   -------------------------------------------------------------------------- */
+.bigbee-mobile-drawer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 2000;
+	visibility: hidden;
+	pointer-events: none;
+	transition: visibility 0.4s ease;
+}
+
+.bigbee-mobile-drawer.is-open {
+	visibility: visible;
+	pointer-events: auto;
+}
+
+.bigbee-mobile-drawer__overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+
+.bigbee-mobile-drawer.is-open .bigbee-mobile-drawer__overlay {
+	opacity: 1;
+}
+
+.bigbee-mobile-drawer__content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 88%;
+	max-width: 380px;
+	height: 100%;
+	background: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 28px 24px;
+	transform: translateX(100%);
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.bigbee-mobile-drawer.is-open .bigbee-mobile-drawer__content {
+	transform: translateX(0);
+}
+
+.bigbee-mobile-drawer__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bigbee-mobile-drawer__close {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--bb-dark);
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: background 0.2s ease;
+}
+
+.bigbee-mobile-drawer__close:hover {
+	background: rgba(0, 0, 0, 0.06);
+}
+
+.bigbee-mobile-nav {
+	margin: 30px 0;
+	flex: 1;
+	overflow-y: auto;
+}
+
+.bigbee-mobile-nav__list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.bigbee-mobile-nav__link {
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	font-size: 1rem;
+	letter-spacing: 0.02em;
+	color: var(--bb-dark);
+	text-transform: uppercase;
+	display: block;
+	padding: 10px 0;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bigbee-mobile-nav__link:hover {
+	color: #000000;
+	transform: translateX(6px);
+}
+
+/* Current-page (Brand Hub) indicator: same non-bold treatment as desktop. */
+.bigbee-mobile-nav__link[aria-current="page"] {
+	color: #000000;
+	box-shadow: inset 0 -2px 0 0 var(--bb-yellow);
+}
+
+.bigbee-mobile-nav__link-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.bigbee-mobile-nav__link-wrapper .bigbee-mobile-nav__link {
+	border-bottom: none;
+	flex: 1;
+}
+
+.bigbee-mobile-nav__toggle {
+	background: none;
+	border: none;
+	padding: 12px;
+	cursor: pointer;
+	color: var(--bb-dark);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease;
+}
+
+.bigbee-mobile-nav__item--has-sub.is-expanded .bigbee-mobile-nav__toggle {
+	transform: rotate(180deg);
+}
+
+.bigbee-mobile-subnav {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding-left: 16px;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-left: 2px solid rgba(255, 192, 0, 0.4);
+	max-height: 0;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	transform: translateY(-8px);
+	transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+		opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+		transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+		margin 0.35s ease,
+		visibility 0.38s ease;
+}
+
+.bigbee-mobile-nav__item--has-sub.is-expanded .bigbee-mobile-subnav {
+	max-height: 320px;
+	opacity: 1;
+	visibility: visible;
+	margin-top: 8px;
+	margin-bottom: 12px;
+	transform: translateY(0);
+}
+
+.bigbee-mobile-subnav__link {
+	font-family: var(--bb-font-body);
+	font-size: 0.95rem;
+	font-weight: 500;
+	color: #4B5563;
+	display: block;
+	padding: 6px 0;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* Reference stylesheet hovers this to an undefined --bb-orange variable
+   (a bug in the source file, silently ignored by the browser); using the
+   BigBee yellow accent here instead so the hover state is actually visible. */
+.bigbee-mobile-subnav__link:hover {
+	color: var(--bb-yellow-glow);
+	transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   11. SITE FOOTER
+   Reproduces the reference "reveal" footer: fixed to the viewport bottom,
+   with <main> given a matching margin-bottom (set in main.js) so normal
+   scrolling uncovers it at the end of the page.
+   -------------------------------------------------------------------------- */
+.bigbee-main {
+	position: relative;
+	z-index: 20;
+	background-color: var(--bb-cream);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+	padding-top: var(--bb-nav-height);
+	/* Short pages (e.g. 404) still need enough height for the fixed "reveal"
+	   footer below to scroll fully into view without an oversized cream gap. */
+	min-height: 650px;
+}
+
+.bigbee-footer-section {
+	background-color: var(--bb-yellow);
+	background-image: url('../images/footer-background.jpg');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	color: var(--bb-dark);
+	padding: 90px 0 40px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.bigbee-footer-container {
+	max-width: var(--bb-content-max);
+	margin: 0 auto;
+}
+
+.bigbee-footer-grid {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+	gap: 50px;
+	margin-bottom: 60px;
+}
+
+.bigbee-footer-logo__img {
+	height: 48px;
+	width: auto;
+	margin-bottom: 24px;
+}
+
+.bigbee-footer-highlights {
+	font-family: var(--bb-font-body);
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: var(--bb-dark);
+}
+
+.bigbee-footer-highlights p {
+	margin-bottom: 12px;
+}
+
+.bigbee-footer-heading {
+	font-family: var(--bb-font-body);
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	color: var(--bb-dark);
+	margin-bottom: 24px;
+	text-transform: uppercase;
+}
+
+.bigbee-footer-links {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.bigbee-footer-links a {
+	font-family: var(--bb-font-body);
+	font-size: 0.95rem;
+	color: var(--bb-dark);
+	transition: opacity 0.2s ease;
+}
+
+.bigbee-footer-links a:hover {
+	opacity: 0.7;
+}
+
+/* Current-page (Brand Hub) indicator: same non-bold treatment as the header nav. */
+.bigbee-footer-link--active {
+	text-decoration: none;
+	text-underline-offset: 3px;
+}
+
+.bigbee-footer-contact {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.bigbee-footer-contact li {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-family: var(--bb-font-body);
+	font-size: 0.95rem;
+	color: var(--bb-dark);
+}
+
+.bigbee-footer-contact svg {
+	stroke: var(--bb-dark);
+	flex-shrink: 0;
+}
+
+.bigbee-footer-bottom {
+	border-top: 1px solid rgba(39, 39, 39, 0.2);
+	padding-top: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-family: var(--bb-font-body);
+	font-size: 0.88rem;
+	color: var(--bb-dark);
+}
+
+.bigbee-footer-socials {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.bigbee-footer-social-link {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid rgba(39, 39, 39, 0.12);
+}
+
+.bigbee-footer-social-roll {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 200%;
+	transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bigbee-footer-social-link:hover .bigbee-footer-social-roll,
+.bigbee-footer-social-link:focus-visible .bigbee-footer-social-roll {
+	transform: translateY(-50%);
+}
+
+.bigbee-footer-social-disc {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 50%;
+	flex-shrink: 0;
+}
+
+.bigbee-footer-social-disc--back {
+	background-color: #FFFFFF;
+}
+
+.bigbee-footer-social-link--instagram .bigbee-footer-social-disc--front {
+	background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.bigbee-footer-social-link--tiktok .bigbee-footer-social-disc--front {
+	background-color: #000000;
+}
+
+.bigbee-footer-social-link--facebook .bigbee-footer-social-disc--front {
+	background-color: #1877F2;
+}
+
+.bigbee-footer-social-link--youtube .bigbee-footer-social-disc--front {
+	background-color: #FF0000;
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE: HEADER / NAV / FOOTER
+   Breakpoints match the reference stylesheet (1024px hides desktop nav in
+   favor of the hamburger; 768px/600px adjust gutters and stack the footer).
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.bigbee-header {
+		background-color: rgba(255, 255, 255, 0.75);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+	}
+
+	.bigbee-nav {
+		display: none;
+	}
+
+	.bigbee-hamburger {
+		display: flex;
+	}
+
+	.bigbee-header__actions .bigbee-btn--header {
+		padding: 10px 16px;
+		font-size: 0.8rem;
+	}
+
+	.bigbee-footer-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 40px;
+	}
+}
+
+@media (max-width: 768px) {
+	.bigbee-footer-grid {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.bigbee-footer-bottom {
+		flex-direction: column;
+		gap: 16px;
+		text-align: center;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   13. HOMEPAGE HERO / INTRO
+   Mixed-weight headline (light first line / stronger second line), matching
+   the editorial heading treatment used across the main BigBee site (e.g.
+   .au-story__heading's light/bold split) rather than a uniformly bold H1.
+   -------------------------------------------------------------------------- */
+.bb-hub-hero {
+	padding: 76px 0 0;
+	background-color: var(--bb-cream);
+	text-align: center;
+}
+
+.bb-hub-hero__inner {
+	max-width: 670px;
+}
+
+.bb-hub-hero .bb-eyebrow {
+	margin-bottom: 26px;
+}
+
+.bb-hub-hero__title {
+	margin: 0 0 20px;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+}
+
+.bb-hub-hero__title span {
+	display: block;
+	font-family: var(--bb-font-display);
+	font-size: clamp(2.1rem, 4.4vw, 3.25rem);
+	font-weight: 400;
+	color: var(--bb-dark);
+}
+
+.bb-hub-hero__title strong {
+	display: block;
+	font-family: var(--bb-font-display);
+	font-size: clamp(2.3rem, 4.8vw, 3.5rem);
+	font-weight: 600;
+	color: var(--bb-dark);
+}
+
+.bb-hub-hero__subtitle {
+	max-width: 480px;
+	margin: 0 auto;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 1.02rem;
+	line-height: 1.7;
+	color: var(--bb-text-muted);
+}
+
+/* Compact hero variant for category/tag archives (category.php, tag.php).
+   Same background/eyebrow/container as the homepage hero — this is an
+   archive, not the Brand Hub's own front page, so it stays smaller and
+   doesn't compete with the homepage's mixed-weight H1. */
+.bb-hub-hero--compact {
+	padding-top: 56px;
+}
+
+.bb-archive-hero__title {
+	margin: 0 0 14px;
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	color: var(--bb-dark);
+}
+
+.bb-archive-hero__description {
+	max-width: 560px;
+	margin: 0 auto;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 1rem;
+	line-height: 1.7;
+	color: var(--bb-text-muted);
+}
+
+.bb-archive-hero__description p {
+	margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   14. TOPIC (CATEGORY) NAVIGATION — PILL FILTERS
+   Plain WordPress category archive links, no AJAX. Wrapping flex row so an
+   arbitrary number of client-managed categories degrades gracefully. Its
+   own vertical padding gives it a distinct "transition zone" feel between
+   the hero background and the white article grid below, rather than
+   sitting flush against the hero.
+   -------------------------------------------------------------------------- */
+.bb-topic-nav {
+	padding: 36px 0 64px;
+	background-color: var(--bb-cream);
+}
+
+.bb-topic-nav__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 12px;
+}
+
+.bb-topic-nav__pill {
+	display: inline-flex;
+	align-items: center;
+	height: 42px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.82rem;
+	letter-spacing: 0.02em;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid rgba(39, 39, 39, 0.10);
+	border-radius: 999px;
+	padding: 0 20px;
+	box-shadow: 0 1px 2px rgba(39, 39, 39, 0.04);
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease,
+		border-color 0.25s ease,
+		background-color 0.25s ease;
+}
+
+/* Restrained premium hover: a slight lift, a stronger border, and a soft
+   shadow only — no underline, no color fill, no font-weight change. */
+.bb-topic-nav__pill:hover,
+.bb-topic-nav__pill:focus-visible {
+	transform: translateY(-2px);
+	border-color: rgba(39, 39, 39, 0.20);
+	box-shadow: 0 6px 18px rgba(39, 39, 39, 0.05);
+}
+
+/* Current-topic indicator: filled charcoal pill, white text — same font
+   weight as every other pill, so nothing "jumps" bold on hover or select.
+   Visually settled: no lift, no shadow, no hover movement. */
+.bb-topic-nav__pill[aria-current="page"] {
+	background-color: var(--bb-dark);
+	border-color: var(--bb-dark);
+	color: var(--bb-white);
+	box-shadow: none;
+}
+
+.bb-topic-nav__pill[aria-current="page"]:hover {
+	border-color: var(--bb-dark);
+	transform: none;
+	box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   15. ARTICLE GRID & EDITORIAL CARD
+   Text-first editorial cards (icon + date, title, excerpt, divider, Read
+   Full Article) — no featured image on the homepage by design. The
+   .bb-card__media rules are kept for the (currently unused-on-homepage)
+   show_media branch in template-parts/content-card.php.
+   -------------------------------------------------------------------------- */
+.bb-hub-grid-section {
+	padding: 0 0 100px;
+	min-height: 700px;
+}
+
+.bb-card-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 28px;
+}
+
+.bb-card {
+	display: flex;
+	flex-direction: column;
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 20px;
+	overflow: hidden;
+	transition: transform var(--bb-transition-fast), box-shadow var(--bb-transition-fast);
+}
+
+/* Restrained hover: a slight lift and a soft shadow only — no scaling, no
+   border-color change, no image movement. */
+.bb-card:hover,
+.bb-card:focus-within {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(39, 39, 39, 0.06);
+}
+
+.bb-card__media {
+	display: block;
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	background-color: #F0EEE7;
+}
+
+.bb-card__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.bb-card__body {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 32px;
+}
+
+/* Featured-image variant only (not used on the homepage): compensates for
+   the missing image slot with a small top accent instead of an empty gap. */
+.bb-card--no-image .bb-card__body {
+	position: relative;
+	padding-top: 36px;
+}
+
+.bb-card--no-image .bb-card__body::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 32px;
+	width: 40px;
+	height: 3px;
+	border-radius: 2px;
+	background-color: var(--bb-yellow);
+}
+
+.bb-card__meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 18px;
+}
+
+.bb-card__meta-icon {
+	display: inline-flex;
+	color: var(--bb-yellow);
+}
+
+.bb-card__date {
+	font-family: var(--bb-font-body);
+	font-size: 0.78rem;
+	letter-spacing: 0.03em;
+	color: var(--bb-text-muted);
+}
+
+.bb-card__title {
+	margin: 0 0 12px;
+	font-size: 1.15rem;
+	font-weight: 500;
+	line-height: 1.35;
+}
+
+.bb-card__title a:hover {
+	color: rgba(39, 39, 39, 0.7);
+}
+
+.bb-card__excerpt {
+	margin: 0;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 0.92rem;
+	line-height: 1.65;
+	color: var(--bb-text-muted);
+	flex: 1;
+}
+
+.bb-card__footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 24px;
+	padding-top: 20px;
+	border-top: 1px solid var(--bb-border-dark);
+}
+
+.bb-card__link {
+	font-family: var(--bb-font-body);
+	font-weight: 600;
+	font-size: 0.85rem;
+	letter-spacing: 0.01em;
+	color: var(--bb-dark);
+	transition: color var(--bb-transition-fast);
+}
+
+.bb-card__footer:hover .bb-card__link {
+	color: rgba(39, 39, 39, 0.7);
+}
+
+.bb-card__arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	flex-shrink: 0;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 50%;
+	transition:
+		background-color 0.25s ease,
+		transform 0.25s ease,
+		color 0.25s ease,
+		border-color 0.25s ease;
+}
+
+/* The arrow reacts to hovering anywhere in the CTA row (text link or
+   circle), not only when the pointer is directly over the small circle. */
+.bb-card__footer:hover .bb-card__arrow {
+	background-color: var(--bb-yellow);
+	border-color: var(--bb-yellow);
+	color: var(--bb-dark);
+	transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   16. PAGINATION
+   Styled output of the_posts_pagination() (WordPress core markup/classes).
+   -------------------------------------------------------------------------- */
+.navigation.pagination {
+	margin-top: 24px;
+}
+
+.pagination .nav-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 40px;
+	height: 40px;
+	padding: 0 14px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.88rem;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 999px;
+	transition: border-color var(--bb-transition-fast), background-color var(--bb-transition-fast),
+		color var(--bb-transition-fast);
+}
+
+.pagination .page-numbers:hover,
+.pagination .page-numbers:focus-visible {
+	border-color: var(--bb-dark);
+}
+
+.pagination .page-numbers.current {
+	background-color: var(--bb-dark);
+	border-color: var(--bb-dark);
+	color: var(--bb-white);
+}
+
+.pagination .page-numbers.dots {
+	border-color: transparent;
+	background: none;
+}
+
+/* --------------------------------------------------------------------------
+   17. EMPTY STATE
+   -------------------------------------------------------------------------- */
+.bb-no-results {
+	max-width: 560px;
+	margin: 0 auto;
+	padding: 60px 0 20px;
+	text-align: center;
+}
+
+.bb-no-results .bb-eyebrow {
+	margin-bottom: 16px;
+}
+
+.bb-no-results__title {
+	margin: 0 0 12px;
+	font-size: 1.6rem;
+}
+
+.bb-no-results__text {
+	margin: 0 0 24px;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	color: var(--bb-text-muted);
+	line-height: 1.7;
+}
+
+.bb-no-results__link {
+	display: inline-flex;
+	align-items: center;
+	height: 42px;
+	padding: 0 24px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.85rem;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid rgba(39, 39, 39, 0.14);
+	border-radius: 999px;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bb-no-results__link:hover,
+.bb-no-results__link:focus-visible {
+	transform: translateY(-2px);
+	border-color: rgba(39, 39, 39, 0.24);
+	box-shadow: 0 6px 16px rgba(39, 39, 39, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   18. RESPONSIVE: HOMEPAGE HERO / TOPICS / GRID
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+	.bb-card-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.bb-topic-nav {
+		padding: 32px 0 50px;
+	}
+}
+
+@media (max-width: 768px) {
+	.bb-hub-hero {
+		padding: 56px 0 0;
+	}
+
+	.bb-topic-nav {
+		padding: 28px 0 40px;
+	}
+
+	.bb-topic-nav__list {
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		scrollbar-width: none;
+		margin: 0 calc(var(--bb-page-gutter) * -1);
+		padding: 0 var(--bb-page-gutter);
+	}
+
+	.bb-topic-nav__list::-webkit-scrollbar {
+		display: none;
+	}
+
+	.bb-topic-nav__pill {
+		flex-shrink: 0;
+		white-space: nowrap;
+	}
+
+	.bb-card-grid {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.bb-hub-grid-section {
+		padding-bottom: 72px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   19. ARTICLE PAGE — TOP (back link, meta row, title)
+   -------------------------------------------------------------------------- */
+.bb-article__top {
+	/* Longhand on purpose: this element already carries .bb-container's
+	   horizontal gutter padding. A "40px 0 0" shorthand here would reset
+	   left/right padding to 0 and pull the content flush to the viewport
+	   edge, out of the 1440px container alignment. */
+	padding-top: 40px;
+}
+
+.bb-back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 28px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.85rem;
+	color: var(--bb-dark);
+	transition: transform var(--bb-transition-fast);
+}
+
+.bb-back-link:hover,
+.bb-back-link:focus-visible {
+	transform: translateX(-3px);
+}
+
+.bb-back-link__icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	flex-shrink: 0;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 50%;
+	transition: border-color var(--bb-transition-fast), box-shadow var(--bb-transition-fast);
+}
+
+.bb-back-link:hover .bb-back-link__icon,
+.bb-back-link:focus-visible .bb-back-link__icon {
+	border-color: var(--bb-yellow);
+	box-shadow: 0 2px 8px rgba(39, 39, 39, 0.08);
+}
+
+.bb-article__meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 18px;
+	font-family: var(--bb-font-body);
+	font-weight: 700;
+	font-size: 0.74rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.bb-article__date {
+	color: var(--bb-text-muted);
+}
+
+.bb-article__meta-sep {
+	color: var(--bb-border-dark);
+	font-weight: 400;
+}
+
+.bb-article__category {
+	color: var(--bb-yellow);
+	transition: opacity var(--bb-transition-fast);
+}
+
+.bb-article__category:hover {
+	opacity: 0.75;
+}
+
+/* Editorial title: large and responsive via clamp(). Bold + uppercase per
+   approval, matching the header/homepage heading treatment; sized a touch
+   smaller than the earlier light/sentence-case version since bold caps
+   take more horizontal space at the same font-size. */
+.bb-article__title {	
+	margin: 0 0 44px;
+	font-family: var(--bb-font-display);
+	font-weight: 400;
+	font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+	line-height: 1.15;
+	letter-spacing: -0.005em;	
+	color: var(--bb-dark);
+}
+
+/* --------------------------------------------------------------------------
+   20. ARTICLE LAYOUT — CONTENT + SIDEBAR GRID
+   Sidebar sticks within the height of the grid row it shares with the
+   article content, so it naturally stops scrolling at the end of the
+   article and can never overlap the footer, with no JS required.
+   -------------------------------------------------------------------------- */
+.bb-article__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 360px;
+	gap: 64px;
+	align-items: start;
+	padding: 0 0 100px;
+}
+
+.bb-article-sidebar {
+	position: sticky;
+	top: calc(var(--bb-nav-height) + 24px);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   21. ARTICLE CONTENT CARD + PROSE TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+.bb-article__content {
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 24px;
+	padding: 48px;
+	min-width: 0;
+}
+
+.bb-article__prose {
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 1.1rem;
+	line-height: 1.75;
+	color: var(--bb-dark);
+	max-width: 720px;
+}
+
+.bb-article__prose > * {
+	margin: 0 0 24px;
+}
+
+.bb-article__prose > *:last-child {
+	margin-bottom: 0;
+}
+
+.bb-article__prose h2,
+.bb-article__prose h3,
+.bb-article__prose h4 {
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	line-height: 1.25;
+	letter-spacing: -0.005em;
+	color: var(--bb-dark);
+}
+
+.bb-article__prose h2 {
+	margin-top: 44px;
+	font-size: clamp(1.55rem, 2.4vw, 2rem);
+}
+
+.bb-article__prose h3 {
+	margin-top: 32px;
+	font-size: clamp(1.25rem, 1.8vw, 1.45rem);
+}
+
+.bb-article__prose h4 {
+	margin-top: 32px;
+	font-weight: 600;
+	font-size: 1.1rem;
+}
+
+.bb-article__prose > h2:first-child,
+.bb-article__prose > h3:first-child,
+.bb-article__prose > h4:first-child {
+	margin-top: 0;
+}
+
+.bb-article__prose p {
+	margin: 0 0 24px;
+}
+
+.bb-article__prose ul,
+.bb-article__prose ol {
+	padding-left: 1.3em;
+	margin: 0 0 24px;
+}
+
+.bb-article__prose ul {
+	list-style: disc;
+}
+
+.bb-article__prose ol {
+	list-style: decimal;
+}
+
+.bb-article__prose li {
+	margin-bottom: 8px;
+	line-height: 1.7;
+}
+
+.bb-article__prose li:last-child {
+	margin-bottom: 0;
+}
+
+.bb-article__prose li > ul,
+.bb-article__prose li > ol {
+	margin-top: 8px;
+	margin-bottom: 0;
+}
+
+.bb-article__prose strong {
+	font-weight: 700;
+	color: var(--bb-dark);
+}
+
+.bb-article__prose a {
+	color: var(--bb-dark);
+	text-decoration: underline;
+	text-decoration-color: var(--bb-yellow);
+	text-decoration-thickness: 1.5px;
+	text-underline-offset: 3px;
+	transition: color var(--bb-transition-fast);
+}
+
+.bb-article__prose a:hover,
+.bb-article__prose a:focus-visible {
+	color: rgba(39, 39, 39, 0.65);
+}
+
+.bb-article__prose blockquote {
+	margin: 0 0 24px;
+	padding: 24px 28px;
+	border-left: 3px solid var(--bb-yellow);
+	border-radius: 0 12px 12px 0;
+	background-color: var(--bb-cream);
+	font-style: italic;
+	font-size: 1.05rem;
+	color: var(--bb-text-muted);
+}
+
+.bb-article__prose blockquote p {
+	margin: 0;
+}
+
+.bb-article__prose blockquote p + p {
+	margin-top: 12px;
+}
+
+.bb-article__prose figure {
+	margin: 0 0 24px;
+}
+
+.bb-article__prose img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 16px;
+}
+
+.bb-article__prose figcaption {
+	margin-top: 10px;
+	font-size: 0.85rem;
+	text-align: center;
+	color: var(--bb-text-muted);
+}
+
+.bb-article__thumbnail {
+	margin-bottom: 32px;
+}
+
+.bb-article__thumbnail img {
+	width: 100%;
+	height: auto;
+	border-radius: 16px;
+	display: block;
+}
+
+/* Responsive tables: Gutenberg's own <figure class="wp-block-table"> wrapper,
+   or the bb-table-wrap fallback added for plain HTML tables in
+   inc/template-tags.php, both scroll horizontally instead of breaking the
+   page width. */
+.bb-article__prose .wp-block-table,
+.bb-article__prose .bb-table-wrap {
+	margin: 0 0 24px;
+	overflow-x: auto;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 12px;
+}
+
+.bb-article__prose table {
+	width: 100%;
+	min-width: 480px;
+	border-collapse: collapse;
+	font-size: 0.92rem;
+}
+
+.bb-article__prose th,
+.bb-article__prose td {
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--bb-border-dark);
+	text-align: left;
+}
+
+.bb-article__prose thead th {
+	font-family: var(--bb-font-display);
+	font-weight: 600;
+	background-color: var(--bb-cream);
+}
+
+.bb-article__prose tr:last-child td {
+	border-bottom: none;
+}
+
+/* --------------------------------------------------------------------------
+   22. SIDEBAR CARDS — TOPICS / REQUIRED READING / CTA
+   -------------------------------------------------------------------------- */
+.bb-sidebar-card {
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 18px;
+	padding: 24px;
+	box-shadow: 0 1px 2px rgba(39, 39, 39, 0.03);
+}
+
+.bb-sidebar-card__heading {
+	margin: 0 0 16px;
+	font-family: var(--bb-font-body);
+	font-weight: 700;
+	font-size: 0.72rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--bb-dark);
+}
+
+.bb-sidebar-topics {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* Smaller sibling of the homepage topic pill — same visual language, no
+   yellow underline, consistent restrained hover. */
+.bb-sidebar-topic-pill {
+	display: inline-flex;
+	align-items: center;
+	height: 30px;
+	padding: 0 13px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.74rem;
+	color: var(--bb-dark);
+	background-color: var(--bb-cream);
+	border: 1px solid rgba(39, 39, 39, 0.10);
+	border-radius: 999px;
+	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.bb-sidebar-topic-pill:hover,
+.bb-sidebar-topic-pill:focus-visible {
+	transform: translateY(-2px);
+	border-color: rgba(39, 39, 39, 0.20);
+	box-shadow: 0 4px 12px rgba(39, 39, 39, 0.05);
+}
+
+.bb-related-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.bb-related-item {
+	padding: 12px 0;
+	border-bottom: 1px solid var(--bb-border-dark);
+}
+
+.bb-related-item:first-child {
+	padding-top: 0;
+}
+
+.bb-related-item:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.bb-related-item__date {
+	display: block;
+	margin-bottom: 6px;
+	font-family: var(--bb-font-body);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--bb-text-muted);
+}
+
+.bb-related-item__title {
+	display: block;
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	font-size: 0.98rem;
+	line-height: 1.4;
+	color: var(--bb-dark);
+	transition: color var(--bb-transition-fast);
+}
+
+.bb-related-item__title:hover,
+.bb-related-item__title:focus-visible {
+	color: rgba(39, 39, 39, 0.7);
+}
+
+.bb-sidebar-cta {
+	background-color: var(--bb-dark);
+	border-radius: 18px;
+	padding: 28px;
+	color: var(--bb-white);
+}
+
+.bb-sidebar-cta__heading {
+	margin: 0 0 10px;
+	font-family: var(--bb-font-display);
+	font-weight: 500;
+	font-size: 1.15rem;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	color: var(--bb-white);
+}
+
+.bb-sidebar-cta__text {
+	margin: 0 0 22px;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	font-size: 0.86rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.bb-sidebar-cta__btn {
+	width: 100%;
+	background-color: var(--bb-yellow);
+	color: var(--bb-dark);
+	border-radius: 999px;
+	padding: 14px 20px;
+}
+
+.bb-sidebar-cta__btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+	background-color: var(--bb-yellow-glow);
+}
+
+.bb-sidebar-cta__btn-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* --------------------------------------------------------------------------
+   23. RESPONSIVE: ARTICLE PAGE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1280px) {
+	.bb-article__layout {
+		grid-template-columns: minmax(0, 1fr) 320px;
+		gap: 48px;
+	}
+
+	.bb-article__content {
+		padding: 44px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.bb-article__layout {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+
+	.bb-article-sidebar {
+		position: static;
+	}
+}
+
+@media (max-width: 768px) {
+	.bb-article__top {
+		padding-top: 32px;
+		padding-bottom: 28px;
+	}
+
+	.bb-article__title {
+		margin-bottom: 32px;
+		font-size: clamp(1.9rem, 8vw, 2.4rem);
+	}
+
+	.bb-back-link {
+		margin-bottom: 24px;
+	}
+
+	.bb-article__content {
+		padding: 28px;
+		border-radius: 20px;
+	}
+
+	.bb-article__prose {
+		font-size: 1.02rem;
+	}
+
+	.bb-article__prose h2 {
+		margin-top: 40px;
+	}
+
+	.bb-article__prose h3 {
+		margin-top: 32px;
+	}
+
+	.bb-sidebar-cta,
+	.bb-sidebar-card {
+		padding: 24px;
+	}
+
+	.bb-article__layout {
+		gap: 32px;
+		padding-bottom: 72px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   24. 404 / ERROR PAGE
+   -------------------------------------------------------------------------- */
+.bb-404 {
+	display: flex;
+	align-items: center;
+	min-height: 900px;
+	padding: 60px 0;
+}
+
+.bb-404__inner {
+	max-width: 560px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.bb-404__code {
+	font-family: var(--bb-font-display);
+	font-size: 5.5rem;
+	font-weight: 500;
+	line-height: 1;
+	color: var(--bb-yellow);
+	margin-bottom: 8px;
+}
+
+.bb-404 .bb-eyebrow {
+	margin-bottom: 16px;
+}
+
+.bb-404__title {
+	margin: 0 0 12px;
+	font-size: 2rem;
+}
+
+.bb-404__text {
+	margin: 0 0 32px;
+	font-family: var(--bb-font-body);
+	font-weight: 300;
+	color: var(--bb-text-muted);
+	line-height: 1.7;
+}
+
+.bb-404 .bb-search-form {
+	margin-bottom: 28px;
+}
+
+.bb-404__link {
+	display: inline-flex;
+}
+
+/* Search form (also used on empty search/archive states). */
+.bb-search-form {
+	display: flex;
+	gap: 10px;
+}
+
+.bb-search-form__field {
+	flex: 1;
+	height: 46px;
+	padding: 0 20px;
+	font-family: var(--bb-font-body);
+	font-size: 0.9rem;
+	color: var(--bb-dark);
+	background-color: #FFFFFF;
+	border: 1px solid var(--bb-border-dark);
+	border-radius: 999px;
+	transition: border-color var(--bb-transition-fast);
+}
+
+.bb-search-form__field:focus-visible {
+	outline: none;
+	border-color: var(--bb-dark);
+}
+
+.bb-search-form__field::placeholder {
+	color: var(--bb-text-muted);
+}
+
+.bb-search-form__submit {
+	height: 46px;
+	padding: 0 26px;
+	font-family: var(--bb-font-body);
+	font-weight: 500;
+	font-size: 0.85rem;
+	color: var(--bb-dark);
+	background-color: var(--bb-yellow);
+	border-radius: 999px;
+	transition: background-color var(--bb-transition-fast), transform var(--bb-transition-fast);
+}
+
+.bb-search-form__submit:hover,
+.bb-search-form__submit:focus-visible {
+	background-color: var(--bb-yellow-glow);
+	transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+	.bb-404 {
+		min-height: 520px;
+		padding: 40px 0;
+	}
+
+	.bb-404__code {
+		font-size: 3.75rem;
+	}
+
+	.bb-404__title {
+		font-size: 1.5rem;
+	}
+
+	.bb-search-form {
+		flex-direction: column;
+	}
+
+	.bb-search-form__submit {
+		width: 100%;
+	}
+}

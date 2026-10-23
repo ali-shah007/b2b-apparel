@@ -1,0 +1,14 @@
+{
+  "name": "ta-sports",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node tools/validate.mjs",
+    "test": "node tools/smoke.mjs"
+  },
+  "dependencies": {"gsap": "3.12.5", "lenis": "1.1.18"},
+  "devDependencies": {"playwright": "^1.56.0"}
+}
