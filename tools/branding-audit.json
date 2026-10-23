@@ -1,0 +1,178 @@
+{
+  "raster_assets_audited": 1390,
+  "static_raster_assets": 222,
+  "animation_frames": 1168,
+  "audit_methods": [
+    "Visual review of every static image and animation contact sheets",
+    "OCR scan of all 1390 raster assets",
+    "Full-resolution review of identified company branding",
+    "Original image dimensions and transparency checked after replacement"
+  ],
+  "rebranded_static_assets": [
+    {
+      "path": "public/assets/images/about-us-hero-large.jpg",
+      "width": 1536,
+      "height": 1024,
+      "before_sha256": "fc83faf55ca16ec734d0537321a0e538a6d09af69024494e58b64ad3e82c329a",
+      "after_sha256": "9d3b5a26332a5a56327348790a5c0d5c66d1ad5a5180a059e3c0c39aa8416687"
+    },
+    {
+      "path": "public/assets/images/about-us-hero-small.jpg",
+      "width": 400,
+      "height": 267,
+      "before_sha256": "46c4cc69cdada7bf44ef7dd25d3a8fa5385c1b496f86a619dc0101eb09b7ad12",
+      "after_sha256": "3efc75175c389ba366892aa1c7d5f614990a1d2445e2a38b5c311d71b0bd4e1f"
+    },
+    {
+      "path": "public/assets/images/about-us-your-collection-one-team.jpg",
+      "width": 941,
+      "height": 1672,
+      "before_sha256": "78c2c02db8bbb99d7c50dff44efb7af52a9a2569c138aa36104889bc117af19e",
+      "after_sha256": "2bab726b09e449ba14efeb3cb56ee0c677e9ba0d42d98e90662c11c77657d6ca"
+    },
+    {
+      "path": "public/assets/images/bespoke-before.jpg",
+      "width": 1672,
+      "height": 941,
+      "before_sha256": "0398d6a225e397b74d12387bfd917ada17af7cfcfe3d347bd7d4a007e611ea0f",
+      "after_sha256": "747b6f4342e01b78bafac655ecc26136746d5aac14c934ebfb28e4adaf4ca196"
+    },
+    {
+      "path": "public/assets/images/bigbee-logo-white.png",
+      "width": 1383,
+      "height": 495,
+      "before_sha256": "fcc9c97dc9550f98dfb0d41bdbc0137adcb4c12dfde8c146207b57882078ff08",
+      "after_sha256": "b71ea051c0b24b1f47a8db424417d45ceb54b6777d144840eaa59ff98ad1b25c"
+    },
+    {
+      "path": "public/assets/images/bigbee-logo.png",
+      "width": 1383,
+      "height": 495,
+      "before_sha256": "054bd7341350c0fb66e5cf3417adc0e76d15dc76ee355c9ba478e4cf65ef2600",
+      "after_sha256": "9b95ab4d2350d2bba339316c95ab4a00d373d9fecf0cea6d34313072132ac1cf"
+    },
+    {
+      "path": "public/assets/images/contact-hero.jpg",
+      "width": 1672,
+      "height": 941,
+      "before_sha256": "4ddbc976a615c3c99afefbef4fd20a06fa2f9bf8caee9204f6c6d53d1c174649",
+      "after_sha256": "403cf4d789e4bdcc70c02ae030b56470b1ec0cb532c56d5a08066a508ab6d161"
+    },
+    {
+      "path": "public/assets/images/experties-10000-styles-developed.jpg",
+      "width": 800,
+      "height": 800,
+      "before_sha256": "d4452a73d06d1c4c6737aa892e61c4eeed30a4c11dc3b1b1625a80352738ce67",
+      "after_sha256": "b149933801031f979d6d31146d0dd0467645f66e3d07e710d6a74002edaa7c23"
+    },
+    {
+      "path": "public/assets/images/favicon.png",
+      "width": 256,
+      "height": 256,
+      "before_sha256": "c13c497c9004f544e5664a5792f47faf7623e9a4c935ced9b0a7a32a26fcf0f8",
+      "after_sha256": "0985c7a3c9d7d5d2ff31a722a0407b8445ebff33882a0c6e3b371db20b25abcf"
+    },
+    {
+      "path": "public/assets/images/gym-suit.png",
+      "width": 550,
+      "height": 673,
+      "before_sha256": "cf36b35844729bf04dacc7fe2545d0f6c4c6ededc524addfc599c4513d47876c",
+      "after_sha256": "56f8bbc83a48362c68e007b4dbcf69673f672647b5b78dd3d3facf9c0355741d"
+    },
+    {
+      "path": "public/assets/images/img-bespoke-service.jpg",
+      "width": 1774,
+      "height": 887,
+      "before_sha256": "81b6e55228c8f7c6b98173675f6889ca6a6d03f485f9543ad3d06e0c228d73cc",
+      "after_sha256": "608338521f018ccbcda6e0a513c87745ae32f9a431a569467b84a9b67198b999"
+    },
+    {
+      "path": "public/assets/images/img-custom-blank.jpg",
+      "width": 2000,
+      "height": 1254,
+      "before_sha256": "bbd8698375177a8158eba890c917ca75766a17ca8de35fb331879a5296445dde",
+      "after_sha256": "f0db030b19433e1c0cfd0a76d93f2b2874676963c6dd761c44e0d0cf461fc247"
+    },
+    {
+      "path": "public/assets/images/instagram/post-03.jpg",
+      "width": 1080,
+      "height": 1350,
+      "before_sha256": "6289cada2fcb3f14868a449d178ee56ae90b5aa55136a9c639f908f71582b718",
+      "after_sha256": "d5a33f6bb0e8cc21be48e4ad49a6b666f3f8dc5c1eda3cd6e5b51aef586d19fc"
+    },
+    {
+      "path": "public/assets/images/instagram/post-04.jpg",
+      "width": 1080,
+      "height": 1920,
+      "before_sha256": "bd10e42fba7346546448114bad0a8c33160662e202b3d46f634c884dd2fab500",
+      "after_sha256": "d93593288d6453a216b0138b7deafd1356dc9c212d9087dbc0059cd4dc998370"
+    },
+    {
+      "path": "public/assets/images/instagram/post-08.jpg",
+      "width": 1080,
+      "height": 1350,
+      "before_sha256": "80bf0fabdf53333030ca4f6a7d8299c32e38a1f90aa4e976b484c258f81943fe",
+      "after_sha256": "61d58b14e6df3991b2ed452fb94597843ea508b78c830b1668458a70e6fc0105"
+    },
+    {
+      "path": "public/assets/images/instagram/post-10.jpg",
+      "width": 1080,
+      "height": 1920,
+      "before_sha256": "f802f706347f507aaff9352f4a3347444c91bc2f421830bfd9789ce2848a11a1",
+      "after_sha256": "43cb6d0a2c0eded22bf7ed04bdd9cbd749d534843c8951ce4e714ad837858751"
+    },
+    {
+      "path": "public/assets/images/instagram/post-11.jpg",
+      "width": 1080,
+      "height": 1350,
+      "before_sha256": "6d1c56e42b72c830b260d36d9f901b880b9e14f8e48f3edcb6d6568f61b93791",
+      "after_sha256": "c3e6253b989530684a665008feb6c1f49cfbec1b885337620e3453749620c4e3"
+    },
+    {
+      "path": "public/assets/images/instagram/post-12.jpg",
+      "width": 720,
+      "height": 1280,
+      "before_sha256": "3b0dc3e65a17e4fd13d07d1e11383ee3ea0a9039c2187a1fdf819ebc7ad76a53",
+      "after_sha256": "f9de5d7cc4eaf1f012212cae8fdcd6d7c718683017f854645237c46d85b69a77"
+    },
+    {
+      "path": "public/assets/images/og-bigbee-apparels.png",
+      "width": 1200,
+      "height": 630,
+      "before_sha256": "b245defc42453979486244425122c80f007a437b7bd2a18ff6c03c6c62dd30ce",
+      "after_sha256": "d761f0e3d07e8b7b1ef21991c7cd1a83bae5f26569e58f09a06d89519b370697"
+    },
+    {
+      "path": "public/assets/images/production-process-step-01.jpg",
+      "width": 1672,
+      "height": 941,
+      "before_sha256": "c6fa95fcb6b1bed480e398ffbb282a9a31ac7aba9c78085c555091a4d20a69ad",
+      "after_sha256": "a37c4be2b5c640e058ba3be69f2b9e4111baf4bae79da27fafc9e6940d811218"
+    },
+    {
+      "path": "public/assets/images/sportswear.png",
+      "width": 550,
+      "height": 673,
+      "before_sha256": "86854cb2481f9d9378b397ca0d4b5cfdd34ca643ba70640a4a476e288fe412ff",
+      "after_sha256": "78edf5047a0d4a7b5de22aa64553dfc4ce2482ece00c58c9f39d7b0a564b64a2"
+    },
+    {
+      "path": "public/assets/images/windbreaker.png",
+      "width": 550,
+      "height": 673,
+      "before_sha256": "d128cccdc895e17b6d82f4b06f9917011e0e83c226e3006711342848d0ad6f64",
+      "after_sha256": "f92fce1404e740ca1f9c0a86fa63a94be040256398993a10d864e2b959c9d563"
+    },
+    {
+      "path": "public/brand-hub/wp-content/themes/bigbee-brand-hub/assets/images/bigbee-logo.png",
+      "width": 1383,
+      "height": 495,
+      "before_sha256": "054bd7341350c0fb66e5cf3417adc0e76d15dc76ee355c9ba478e4cf65ef2600",
+      "after_sha256": "9b95ab4d2350d2bba339316c95ab4a00d373d9fecf0cea6d34313072132ac1cf"
+    }
+  ],
+  "remaining_work": {
+    "status": "pending_user_method_approval",
+    "description": "BigBee logos remain in the mailer, carton and truck animation frames in scenes 5 and 6. Python batch editing was requested to keep frame-to-frame motion consistent; no response has been received yet."
+  }
+}
