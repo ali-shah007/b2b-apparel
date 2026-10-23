@@ -24,9 +24,9 @@ document.addEventListener('click',event=>{
  const action=event.target.closest('[data-chat-action="live-chat"],[data-chat-action="whatsapp"]');
  if(action){event.preventDefault();event.stopImmediatePropagation();location.href='/contact';}
 },true);
-document.addEventListener('DOMContentLoaded',()=>{
+window.initTASupport = ()=>{
  document.querySelectorAll('.cf-turnstile,.contact-form__captcha,.bb-chat__turnstile').forEach(el=>el.remove());
  document.querySelectorAll('[data-chat-action="live-chat"] strong').forEach(el=>el.textContent='Contact TA Sports');
  document.querySelectorAll('[data-chat-action="live-chat"] p').forEach(el=>el.textContent='Share your project with our team.');
  document.querySelectorAll('form input[name="_token"]').forEach(el=>el.remove());
-});
+};

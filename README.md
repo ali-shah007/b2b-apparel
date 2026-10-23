@@ -1,8 +1,8 @@
-# TA Sports
+# TA Sports — Next.js
 
-A locally hosted TA Sports version of the supplied BigBee Apparels reference, preserving its page layouts, apparel imagery, typography, responsive menus, product-category interactions, GSAP/Lenis animations, and editorial content.
+A Next.js 16 App Router application with React 19, preserving the supplied reference website's layouts, apparel imagery, typography, responsive menus, product interactions and GSAP/Lenis scroll animations under TA Sports branding.
 
-## Run
+## Development
 
 Requires Node.js 24 and npm. From `/workspace/b2b-apparel`:
 
@@ -11,27 +11,43 @@ npm ci
 npm run dev
 ```
 
-The application listens on port 3000; set `PORT` to override it. `npm start` runs the same server. All pages and visual assets are served from `public/`; a separate frontend build is unnecessary.
-
-## Validate
+The Next.js development server listens on port 3000. Use `npm run dev -- --port 3001` to choose another port.
 
 ```sh
 npm run build
+npm start
 npm test
+node tools/check-inquiries.mjs
 ```
 
-`build` validates branding and linked local assets. The smoke suite requires Chromium at `/usr/bin/chromium` (or `CHROMIUM_PATH`) and the server running on port 3000 (or `TEST_BASE_URL`). It checks every captured route, representative desktop and mobile pages, navigation, animations, inquiry validation and submissions. Browser screenshots are written to the ignored `artifacts/` directory.
+The build validates the local content/assets and creates an optimized Next.js production build. `npm start` runs the production server. The browser smoke tests require a running server and Chromium at `/usr/bin/chromium` (or `CHROMIUM_PATH`). Set `TEST_BASE_URL` to test another server. Screenshots are written to ignored `artifacts/`.
 
-## Pages and assets
+## Architecture
 
-The site includes the homepage, bespoke service, expertise overview and all nine apparel categories, three solutions pages, company story, sustainability, client reviews, contact, four help pages, and the Brand Hub's articles, categories, tags and pagination. `tools/mirror-report.json` records the 205 discovered reference routes. Some trailing-slash routes resolve to the same physical page. Animation frames, fonts, scripts and styles are local, so the core site does not depend on the reference server or third-party CDNs. The seven video testimonials retain the reference’s Instagram embeds and require Instagram access.
+- `app/[[...slug]]/page.jsx`: statically generated React server pages for all 205 captured routes, with per-page Next.js metadata and real HTTP 404s.
+- `app/[[...slug]]/layout.jsx`: route-specific root layout, styles, fonts, body classes and structured metadata.
+- `content/routes.json` and `content/pages/`: page content and presentation data, rendered by Next.js. Page HTML is not served out of the public directory.
+- `components/PageRuntime.jsx`: client-side initialization for the retained animation and interaction scripts after React hydration.
+- `app/contact/submit`, `app/sourcing/submit`, `app/api/inquiry`: Next.js route handlers for inquiries.
+- `lib/inquiries.js`: shared validation and storage for the route handlers.
+- `public/assets/`: local photographs, apparel images, 1,168 animation frames, fonts, scripts, TA Sports SVG logos and favicon.
 
-TA Sports logos and favicon are in `public/assets/images/ta-sports-*.svg`. Human-facing company names, metadata and navigation are rebranded. Original CSS class names remain to preserve the reference's behavior.
+Routes include the homepage, bespoke service, all nine apparel categories and their product detail pages, three solutions pages, company pages, contact, four help pages, and the Brand Hub's articles, categories, tags and pagination. `tools/mirror-report.json` records the discovered reference routes. Some trailing-slash URLs refer to the same route. Original CSS class names are retained to preserve the visuals. The seven client-video testimonials keep the reference's Instagram embeds and require Instagram connectivity; core visuals are local.
 
-## Inquiries
+## Inquiry storage
 
-Contact and sourcing forms submit to this app's server. Requests are validated and stored in `.local/inquiries/requests.jsonl`, with optional attachments in the same private directory. The directory is ignored by Git and cannot be accessed through the web server. Both forms display an inquiry reference after successful storage. The server enforces required fields, contact-email format, upload extension and size limits, same-origin browser submissions and a submission rate limit.
+During local development, inquiries are stored in `.local/inquiries/requests.jsonl`, and attachments in the same private directory. This ignored directory is not web-accessible. Browser tests remove only their own sample requests.
 
-**Email delivery, live chat and WhatsApp are not connected.** The reference company's phone, email and social destinations are replaced with the TA Sports contact route. Supply TA Sports contact details and connect a mail/CRM service before a public launch. For production, add HTTPS, persistent protected storage, backup/retention and shared rate limiting appropriate to the hosting platform.
+On Vercel, connect a **private Vercel Blob store** to the project so `BLOB_READ_WRITE_TOKEN` is available, then redeploy. The route handlers store inquiries and attachments privately in Blob. Without the binding, submission returns an explicit unavailable response; no success is claimed. Vercel inquiries must be under 4 MB including attachments, within the platform's request-body limit. Local inquiries support attachments up to 20 MB.
 
-The reference's products, company statistics, testimonials, brand marks, editorial text and photographs are preserved as requested. Review company-specific claims and asset permissions before publishing.
+Email delivery, live chat and WhatsApp are not connected. Supply TA Sports' own service/contact details before enabling these services. The reference's phone, email and social contact links lead to the TA Sports contact page. Review the preserved company claims, testimonials, brand marks, photographs and editorial text before public launch.
+
+## Vercel deployment
+
+`vercel.json` selects the Next.js framework and the standard `npm run build` command. With a Vercel account connected:
+
+```sh
+vercel deploy --prod
+```
+
+The pages and animations require no secret. Inquiry storage requires the private Blob binding described above. A temporary deployment can be created without an account using Vercel CLI's `--temporary` option, then claimed into an account.

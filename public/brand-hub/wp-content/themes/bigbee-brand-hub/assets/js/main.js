@@ -101,8 +101,8 @@
 		}
 	}
 
-	document.addEventListener( 'DOMContentLoaded', function () {
+	window.initTABrandHub = function () {
 		initMobileDrawer();
 		initFooterSpacer();
-	} );
+	};
 } )();

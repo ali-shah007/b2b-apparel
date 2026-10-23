@@ -1,0 +1,822 @@
+[
+  {
+    "route": "/about-us/client-reviews",
+    "file": "about-us__client-reviews.json"
+  },
+  {
+    "route": "/about-us",
+    "file": "about-us.json"
+  },
+  {
+    "route": "/about-us/sustainability",
+    "file": "about-us__sustainability.json"
+  },
+  {
+    "route": "/bespoke-service",
+    "file": "bespoke-service.json"
+  },
+  {
+    "route": "/brand-hub/2026-spring-summer-print-trends-a-creative-revival",
+    "file": "brand-hub__2026-spring-summer-print-trends-a-creative-revival.json"
+  },
+  {
+    "route": "/brand-hub/3d-embroidery-vs-flat-embroidery",
+    "file": "brand-hub__3d-embroidery-vs-flat-embroidery.json"
+  },
+  {
+    "route": "/brand-hub/8-best-t-shirt-display-ideas-for-retailers-and-customers",
+    "file": "brand-hub__8-best-t-shirt-display-ideas-for-retailers-and-customers.json"
+  },
+  {
+    "route": "/brand-hub/a-guide-to-types-of-hoodies-for-clothing-startups",
+    "file": "brand-hub__a-guide-to-types-of-hoodies-for-clothing-startups.json"
+  },
+  {
+    "route": "/brand-hub/all-you-need-to-know-about-rompers-the-perfect-blend-of-style-and-comfort",
+    "file": "brand-hub__all-you-need-to-know-about-rompers-the-perfect-blend-of-style-and-comfort.json"
+  },
+  {
+    "route": "/brand-hub/bikini-manufacturer",
+    "file": "brand-hub__bikini-manufacturer.json"
+  },
+  {
+    "route": "/brand-hub/building-a-fashion-brand-story-marketing-fundamentals-for-new-apparel-labels",
+    "file": "brand-hub__building-a-fashion-brand-story-marketing-fundamentals-for-new-apparel-labels.json"
+  },
+  {
+    "route": "/brand-hub/category/clothing-accessories",
+    "file": "brand-hub__category__clothing-accessories.json"
+  },
+  {
+    "route": "/brand-hub/category/clothing-production",
+    "file": "brand-hub__category__clothing-production.json"
+  },
+  {
+    "route": "/brand-hub/category/fabrics",
+    "file": "brand-hub__category__fabrics.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-apparel",
+    "file": "brand-hub__category__fashion-apparel.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-brands",
+    "file": "brand-hub__category__fashion-brands.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-design",
+    "file": "brand-hub__category__fashion-design.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-marketing",
+    "file": "brand-hub__category__fashion-marketing.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-printing",
+    "file": "brand-hub__category__fashion-printing.json"
+  },
+  {
+    "route": "/brand-hub/category/fashion-shipping",
+    "file": "brand-hub__category__fashion-shipping.json"
+  },
+  {
+    "route": "/brand-hub/choose-the-best-types-of-t-shirts-to-build-a-successful-clothing-brand",
+    "file": "brand-hub__choose-the-best-types-of-t-shirts-to-build-a-successful-clothing-brand.json"
+  },
+  {
+    "route": "/brand-hub/choosing-the-right-clothing-manufacturer-for-your-brand",
+    "file": "brand-hub__choosing-the-right-clothing-manufacturer-for-your-brand.json"
+  },
+  {
+    "route": "/brand-hub/crop-top-vs-tank-top-vs-camisole-what-are-the-differences",
+    "file": "brand-hub__crop-top-vs-tank-top-vs-camisole-what-are-the-differences.json"
+  },
+  {
+    "route": "/brand-hub/custom-accessories-hangtags-woven-labels-packaging-that-build-brand-identity",
+    "file": "brand-hub__custom-accessories-hangtags-woven-labels-packaging-that-build-brand-identity.json"
+  },
+  {
+    "route": "/brand-hub/denim-vs-jeans-unweaving-the-confusion",
+    "file": "brand-hub__denim-vs-jeans-unweaving-the-confusion.json"
+  },
+  {
+    "route": "/brand-hub/does-cotton-tend-to-pill-or-not",
+    "file": "brand-hub__does-cotton-tend-to-pill-or-not.json"
+  },
+  {
+    "route": "/brand-hub/embroidery-vs-screen-printing-choosing-decoration-for-your-brand",
+    "file": "brand-hub__embroidery-vs-screen-printing-choosing-decoration-for-your-brand.json"
+  },
+  {
+    "route": "/brand-hub/fashion-illustration-techniques-from-sketch-to-technical-drawing-in-apparel-design",
+    "file": "brand-hub__fashion-illustration-techniques-from-sketch-to-technical-drawing-in-apparel-design.json"
+  },
+  {
+    "route": "/brand-hub/freight-duties-fulfillment-a-founders-guide-to-apparel-shipping-logistics",
+    "file": "brand-hub__freight-duties-fulfillment-a-founders-guide-to-apparel-shipping-logistics.json"
+  },
+  {
+    "route": "/brand-hub/grading-and-size-charts-building-a-consistent-fit-across-your-line",
+    "file": "brand-hub__grading-and-size-charts-building-a-consistent-fit-across-your-line.json"
+  },
+  {
+    "route": "/brand-hub/heavyweight-streetwear-fleece-gsm",
+    "file": "brand-hub__heavyweight-streetwear-fleece-gsm.json"
+  },
+  {
+    "route": "/brand-hub/how-clothes-influence-mood",
+    "file": "brand-hub__how-clothes-influence-mood.json"
+  },
+  {
+    "route": "/brand-hub/how-do-care-labels-on-the-outside-benefit-your-brand",
+    "file": "brand-hub__how-do-care-labels-on-the-outside-benefit-your-brand.json"
+  },
+  {
+    "route": "/brand-hub/how-to-customize-labels-for-apparel-brands",
+    "file": "brand-hub__how-to-customize-labels-for-apparel-brands.json"
+  },
+  {
+    "route": "/brand-hub/how-to-find-the-best-trending-t-shirt-designs",
+    "file": "brand-hub__how-to-find-the-best-trending-t-shirt-designs.json"
+  },
+  {
+    "route": "/brand-hub/how-to-launch-a-streetwear-brand-in-2026-sourcing-sizing-playbook",
+    "file": "brand-hub__how-to-launch-a-streetwear-brand-in-2026-sourcing-sizing-playbook.json"
+  },
+  {
+    "route": "/brand-hub/how-to-market-your-clothing-brand-strategies-for-success",
+    "file": "brand-hub__how-to-market-your-clothing-brand-strategies-for-success.json"
+  },
+  {
+    "route": "/brand-hub/how-to-measure-clothes-a-new-brand-must-know",
+    "file": "brand-hub__how-to-measure-clothes-a-new-brand-must-know.json"
+  },
+  {
+    "route": "/brand-hub",
+    "file": "brand-hub.json"
+  },
+  {
+    "route": "/brand-hub/modern-necklines-for-your-clothing-brand",
+    "file": "brand-hub__modern-necklines-for-your-clothing-brand.json"
+  },
+  {
+    "route": "/brand-hub/nylon-vs-polyester-which-is-the-best-fabric",
+    "file": "brand-hub__nylon-vs-polyester-which-is-the-best-fabric.json"
+  },
+  {
+    "route": "/brand-hub/page/2",
+    "file": "brand-hub__page__2.json"
+  },
+  {
+    "route": "/brand-hub/page/3",
+    "file": "brand-hub__page__3.json"
+  },
+  {
+    "route": "/brand-hub/sweat-pants",
+    "file": "brand-hub__sweat-pants.json"
+  },
+  {
+    "route": "/brand-hub/tag/brand-building",
+    "file": "brand-hub__tag__brand-building.json"
+  },
+  {
+    "route": "/brand-hub/tag/brand-building/page/2",
+    "file": "brand-hub__tag__brand-building__page__2.json"
+  },
+  {
+    "route": "/brand-hub/tag/embroidery",
+    "file": "brand-hub__tag__embroidery.json"
+  },
+  {
+    "route": "/brand-hub/tag/fabric-sourcing",
+    "file": "brand-hub__tag__fabric-sourcing.json"
+  },
+  {
+    "route": "/brand-hub/tag/low-moq",
+    "file": "brand-hub__tag__low-moq.json"
+  },
+  {
+    "route": "/brand-hub/tag/manufacturing",
+    "file": "brand-hub__tag__manufacturing.json"
+  },
+  {
+    "route": "/brand-hub/tag/manufacturing/page/2",
+    "file": "brand-hub__tag__manufacturing__page__2.json"
+  },
+  {
+    "route": "/brand-hub/tag/marketing",
+    "file": "brand-hub__tag__marketing.json"
+  },
+  {
+    "route": "/brand-hub/tag/packaging",
+    "file": "brand-hub__tag__packaging.json"
+  },
+  {
+    "route": "/brand-hub/tag/quality-control",
+    "file": "brand-hub__tag__quality-control.json"
+  },
+  {
+    "route": "/brand-hub/tag/screen-printing",
+    "file": "brand-hub__tag__screen-printing.json"
+  },
+  {
+    "route": "/brand-hub/tag/shipping-logistics",
+    "file": "brand-hub__tag__shipping-logistics.json"
+  },
+  {
+    "route": "/brand-hub/tag/sizing-fit",
+    "file": "brand-hub__tag__sizing-fit.json"
+  },
+  {
+    "route": "/brand-hub/tag/streetwear",
+    "file": "brand-hub__tag__streetwear.json"
+  },
+  {
+    "route": "/brand-hub/tag/sustainable-fashion",
+    "file": "brand-hub__tag__sustainable-fashion.json"
+  },
+  {
+    "route": "/brand-hub/tag/tech-packs",
+    "file": "brand-hub__tag__tech-packs.json"
+  },
+  {
+    "route": "/brand-hub/tech-pack-design-for-clothing-brands-complete-technical-blueprint-guide",
+    "file": "brand-hub__tech-pack-design-for-clothing-brands-complete-technical-blueprint-guide.json"
+  },
+  {
+    "route": "/brand-hub/the-complete-guide-to-different-custom-hang-tags-for-clothing",
+    "file": "brand-hub__the-complete-guide-to-different-custom-hang-tags-for-clothing.json"
+  },
+  {
+    "route": "/brand-hub/the-streetwear-designers-guide-to-gsm-understanding-fabric-weights-fleece-textures",
+    "file": "brand-hub__the-streetwear-designers-guide-to-gsm-understanding-fabric-weights-fleece-textures.json"
+  },
+  {
+    "route": "/brand-hub/things-to-know-about-dropshipping",
+    "file": "brand-hub__things-to-know-about-dropshipping.json"
+  },
+  {
+    "route": "/brand-hub/unveiling-the-diversity-of-different-types-of-pockets",
+    "file": "brand-hub__unveiling-the-diversity-of-different-types-of-pockets.json"
+  },
+  {
+    "route": "/contact",
+    "file": "contact.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-cowhide-shoulder-bag",
+    "file": "expertise__accessories__custom-cowhide-shoulder-bag.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-embroidered-snapback-cap",
+    "file": "expertise__accessories__custom-embroidered-snapback-cap.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-patch-knit-beanie",
+    "file": "expertise__accessories__custom-patch-knit-beanie.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-patch-trucker-cap",
+    "file": "expertise__accessories__custom-patch-trucker-cap.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-patchwork-tote-bag",
+    "file": "expertise__accessories__custom-patchwork-tote-bag.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-premium-leather-backpack",
+    "file": "expertise__accessories__custom-premium-leather-backpack.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-printed-balaclava",
+    "file": "expertise__accessories__custom-printed-balaclava.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-printed-bucket-hat",
+    "file": "expertise__accessories__custom-printed-bucket-hat.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-retro-crew-socks",
+    "file": "expertise__accessories__custom-retro-crew-socks.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-tactical-fingerless-gloves",
+    "file": "expertise__accessories__custom-tactical-fingerless-gloves.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-tactical-shemagh-scarf",
+    "file": "expertise__accessories__custom-tactical-shemagh-scarf.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-vintage-denim-baseball-cap",
+    "file": "expertise__accessories__custom-vintage-denim-baseball-cap.json"
+  },
+  {
+    "route": "/expertise/accessories/custom-vintage-leather-duffle-bag",
+    "file": "expertise__accessories__custom-vintage-leather-duffle-bag.json"
+  },
+  {
+    "route": "/expertise/accessories",
+    "file": "expertise__accessories.json"
+  },
+  {
+    "route": "/expertise/activewear/biker-shorts",
+    "file": "expertise__activewear__biker-shorts.json"
+  },
+  {
+    "route": "/expertise/activewear/compression-shirt",
+    "file": "expertise__activewear__compression-shirt.json"
+  },
+  {
+    "route": "/expertise/activewear/compression-shorts",
+    "file": "expertise__activewear__compression-shorts.json"
+  },
+  {
+    "route": "/expertise/activewear/gym-shorts",
+    "file": "expertise__activewear__gym-shorts.json"
+  },
+  {
+    "route": "/expertise/activewear",
+    "file": "expertise__activewear.json"
+  },
+  {
+    "route": "/expertise/activewear/joggers",
+    "file": "expertise__activewear__joggers.json"
+  },
+  {
+    "route": "/expertise/activewear/leggings",
+    "file": "expertise__activewear__leggings.json"
+  },
+  {
+    "route": "/expertise/activewear/performance-t-shirt",
+    "file": "expertise__activewear__performance-t-shirt.json"
+  },
+  {
+    "route": "/expertise/activewear/quarter-zip-top",
+    "file": "expertise__activewear__quarter-zip-top.json"
+  },
+  {
+    "route": "/expertise/activewear/running-shorts",
+    "file": "expertise__activewear__running-shorts.json"
+  },
+  {
+    "route": "/expertise/activewear/sports-bra",
+    "file": "expertise__activewear__sports-bra.json"
+  },
+  {
+    "route": "/expertise/activewear/tank-top",
+    "file": "expertise__activewear__tank-top.json"
+  },
+  {
+    "route": "/expertise/activewear/track-pants",
+    "file": "expertise__activewear__track-pants.json"
+  },
+  {
+    "route": "/expertise/activewear/training-jacket",
+    "file": "expertise__activewear__training-jacket.json"
+  },
+  {
+    "route": "/expertise/activewear/workout-set",
+    "file": "expertise__activewear__workout-set.json"
+  },
+  {
+    "route": "/expertise/activewear/yoga-set",
+    "file": "expertise__activewear__yoga-set.json"
+  },
+  {
+    "route": "/expertise/denim-wear/baggy-jeans",
+    "file": "expertise__denim-wear__baggy-jeans.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-cargo-pants",
+    "file": "expertise__denim-wear__denim-cargo-pants.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-jacket",
+    "file": "expertise__denim-wear__denim-jacket.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-set",
+    "file": "expertise__denim-wear__denim-set.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-shirt",
+    "file": "expertise__denim-wear__denim-shirt.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-shorts",
+    "file": "expertise__denim-wear__denim-shorts.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-skirt",
+    "file": "expertise__denim-wear__denim-skirt.json"
+  },
+  {
+    "route": "/expertise/denim-wear/denim-vest",
+    "file": "expertise__denim-wear__denim-vest.json"
+  },
+  {
+    "route": "/expertise/denim-wear/flared-jeans",
+    "file": "expertise__denim-wear__flared-jeans.json"
+  },
+  {
+    "route": "/expertise/denim-wear",
+    "file": "expertise__denim-wear.json"
+  },
+  {
+    "route": "/expertise/denim-wear/jorts",
+    "file": "expertise__denim-wear__jorts.json"
+  },
+  {
+    "route": "/expertise/denim-wear/relaxed-denim-jeans",
+    "file": "expertise__denim-wear__relaxed-denim-jeans.json"
+  },
+  {
+    "route": "/expertise/denim-wear/straight-leg-jeans",
+    "file": "expertise__denim-wear__straight-leg-jeans.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-crocodile-embossed-leather-cap",
+    "file": "expertise__leather-wear__custom-crocodile-embossed-leather-cap.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-cropped-bomber-jacket",
+    "file": "expertise__leather-wear__custom-cropped-bomber-jacket.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-lace-up-leather-shorts",
+    "file": "expertise__leather-wear__custom-lace-up-leather-shorts.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-leather-corset-vest",
+    "file": "expertise__leather-wear__custom-leather-corset-vest.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-leather-varsity-jacket",
+    "file": "expertise__leather-wear__custom-leather-varsity-jacket.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-long-leather-gloves",
+    "file": "expertise__leather-wear__custom-long-leather-gloves.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-off-shoulder-leather-crop-top",
+    "file": "expertise__leather-wear__custom-off-shoulder-leather-crop-top.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-racing-moto-jacket",
+    "file": "expertise__leather-wear__custom-racing-moto-jacket.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-ruched-leather-mini-skirt",
+    "file": "expertise__leather-wear__custom-ruched-leather-mini-skirt.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-studded-leather-cargo-pants",
+    "file": "expertise__leather-wear__custom-studded-leather-cargo-pants.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-varsity-jacket",
+    "file": "expertise__leather-wear__custom-varsity-jacket.json"
+  },
+  {
+    "route": "/expertise/leather-wear/custom-vintage-leather-satchel-bag",
+    "file": "expertise__leather-wear__custom-vintage-leather-satchel-bag.json"
+  },
+  {
+    "route": "/expertise/leather-wear",
+    "file": "expertise__leather-wear.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-coach-jacket",
+    "file": "expertise__outerwear__custom-coach-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-color-block-windbreaker-jacket",
+    "file": "expertise__outerwear__custom-color-block-windbreaker-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-diamond-quilted-jacket",
+    "file": "expertise__outerwear__custom-diamond-quilted-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-fleece-lace-up-hoodie",
+    "file": "expertise__outerwear__custom-fleece-lace-up-hoodie.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-harrington-jacket",
+    "file": "expertise__outerwear__custom-harrington-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-padded-puffer-vest",
+    "file": "expertise__outerwear__custom-padded-puffer-vest.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-puffer-jacket",
+    "file": "expertise__outerwear__custom-puffer-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-racing-bomber-jacket",
+    "file": "expertise__outerwear__custom-racing-bomber-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-racing-track-jacket",
+    "file": "expertise__outerwear__custom-racing-track-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-sherpa-fleece-jacket",
+    "file": "expertise__outerwear__custom-sherpa-fleece-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-tactical-utility-jacket",
+    "file": "expertise__outerwear__custom-tactical-utility-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-technical-shell-jacket",
+    "file": "expertise__outerwear__custom-technical-shell-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-two-tone-windbreaker-jacket",
+    "file": "expertise__outerwear__custom-two-tone-windbreaker-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear/custom-varsity-letterman-jacket",
+    "file": "expertise__outerwear__custom-varsity-letterman-jacket.json"
+  },
+  {
+    "route": "/expertise/outerwear",
+    "file": "expertise__outerwear.json"
+  },
+  {
+    "route": "/expertise/sportswear/color-block-football-jersey",
+    "file": "expertise__sportswear__color-block-football-jersey.json"
+  },
+  {
+    "route": "/expertise/sportswear/color-block-performance-polo-shirt",
+    "file": "expertise__sportswear__color-block-performance-polo-shirt.json"
+  },
+  {
+    "route": "/expertise/sportswear/color-block-performance-track-jacket",
+    "file": "expertise__sportswear__color-block-performance-track-jacket.json"
+  },
+  {
+    "route": "/expertise/sportswear/color-block-wide-leg-track-pants",
+    "file": "expertise__sportswear__color-block-wide-leg-track-pants.json"
+  },
+  {
+    "route": "/expertise/sportswear/custom-american-football-jersey",
+    "file": "expertise__sportswear__custom-american-football-jersey.json"
+  },
+  {
+    "route": "/expertise/sportswear/custom-basketball-jersey",
+    "file": "expertise__sportswear__custom-basketball-jersey.json"
+  },
+  {
+    "route": "/expertise/sportswear/custom-mesh-basketball-shorts",
+    "file": "expertise__sportswear__custom-mesh-basketball-shorts.json"
+  },
+  {
+    "route": "/expertise/sportswear/custom-performance-football-shorts",
+    "file": "expertise__sportswear__custom-performance-football-shorts.json"
+  },
+  {
+    "route": "/expertise/sportswear/custom-pinstripe-baseball-jersey",
+    "file": "expertise__sportswear__custom-pinstripe-baseball-jersey.json"
+  },
+  {
+    "route": "/expertise/sportswear/gradient-performance-training-t-shirt",
+    "file": "expertise__sportswear__gradient-performance-training-t-shirt.json"
+  },
+  {
+    "route": "/expertise/sportswear/heavyweight-color-block-graphic-hoodie",
+    "file": "expertise__sportswear__heavyweight-color-block-graphic-hoodie.json"
+  },
+  {
+    "route": "/expertise/sportswear",
+    "file": "expertise__sportswear.json"
+  },
+  {
+    "route": "/expertise/sportswear/long-sleeve-compression-training-top",
+    "file": "expertise__sportswear__long-sleeve-compression-training-top.json"
+  },
+  {
+    "route": "/expertise/sportswear/varsity-basketball-graphic-shorts",
+    "file": "expertise__sportswear__varsity-basketball-graphic-shorts.json"
+  },
+  {
+    "route": "/expertise/sportswear/womens-performance-tracksuit-set",
+    "file": "expertise__sportswear__womens-performance-tracksuit-set.json"
+  },
+  {
+    "route": "/expertise/streetwear/adventure-mountain-graphic-sweatshirt",
+    "file": "expertise__streetwear__adventure-mountain-graphic-sweatshirt.json"
+  },
+  {
+    "route": "/expertise/streetwear/classic-graphic-varsity-jacket",
+    "file": "expertise__streetwear__classic-graphic-varsity-jacket.json"
+  },
+  {
+    "route": "/expertise/streetwear/gothic-graphic-wide-leg-sweatpants",
+    "file": "expertise__streetwear__gothic-graphic-wide-leg-sweatpants.json"
+  },
+  {
+    "route": "/expertise/streetwear/graphic-t-shirt",
+    "file": "expertise__streetwear__graphic-t-shirt.json"
+  },
+  {
+    "route": "/expertise/streetwear/heavyweight-graphic-pullover",
+    "file": "expertise__streetwear__heavyweight-graphic-pullover.json"
+  },
+  {
+    "route": "/expertise/streetwear",
+    "file": "expertise__streetwear.json"
+  },
+  {
+    "route": "/expertise/streetwear/motorsport-graphic-bomber-jacket",
+    "file": "expertise__streetwear__motorsport-graphic-bomber-jacket.json"
+  },
+  {
+    "route": "/expertise/streetwear/oversized-acid-wash-graphic-t-shirt",
+    "file": "expertise__streetwear__oversized-acid-wash-graphic-t-shirt.json"
+  },
+  {
+    "route": "/expertise/streetwear/oversized-graphic-polo-jersey",
+    "file": "expertise__streetwear__oversized-graphic-polo-jersey.json"
+  },
+  {
+    "route": "/expertise/streetwear/oversized-graphic-sweatshorts",
+    "file": "expertise__streetwear__oversized-graphic-sweatshorts.json"
+  },
+  {
+    "route": "/expertise/streetwear/oversized-tribal-graphic-zip-up-hoodie",
+    "file": "expertise__streetwear__oversized-tribal-graphic-zip-up-hoodie.json"
+  },
+  {
+    "route": "/expertise/streetwear/oversized-varsity-football-jersey",
+    "file": "expertise__streetwear__oversized-varsity-football-jersey.json"
+  },
+  {
+    "route": "/expertise/streetwear/scorpion-graphic-wide-leg-joggers",
+    "file": "expertise__streetwear__scorpion-graphic-wide-leg-joggers.json"
+  },
+  {
+    "route": "/expertise/streetwear/techwear-multi-pocket-cargo-pants",
+    "file": "expertise__streetwear__techwear-multi-pocket-cargo-pants.json"
+  },
+  {
+    "route": "/expertise/streetwear/vintage-color-block-tracksuit-set",
+    "file": "expertise__streetwear__vintage-color-block-tracksuit-set.json"
+  },
+  {
+    "route": "/expertise/streetwear/vintage-samurai-graphic-tank-top",
+    "file": "expertise__streetwear__vintage-samurai-graphic-tank-top.json"
+  },
+  {
+    "route": "/expertise/swimwear/beach-cover-up",
+    "file": "expertise__swimwear__beach-cover-up.json"
+  },
+  {
+    "route": "/expertise/swimwear/beach-shorts",
+    "file": "expertise__swimwear__beach-shorts.json"
+  },
+  {
+    "route": "/expertise/swimwear/bikini-bottoms",
+    "file": "expertise__swimwear__bikini-bottoms.json"
+  },
+  {
+    "route": "/expertise/swimwear/bikini-set",
+    "file": "expertise__swimwear__bikini-set.json"
+  },
+  {
+    "route": "/expertise/swimwear/bikini-top",
+    "file": "expertise__swimwear__bikini-top.json"
+  },
+  {
+    "route": "/expertise/swimwear/board-shorts",
+    "file": "expertise__swimwear__board-shorts.json"
+  },
+  {
+    "route": "/expertise/swimwear",
+    "file": "expertise__swimwear.json"
+  },
+  {
+    "route": "/expertise/swimwear/one-piece-swimsuit",
+    "file": "expertise__swimwear__one-piece-swimsuit.json"
+  },
+  {
+    "route": "/expertise/swimwear/rash-guard",
+    "file": "expertise__swimwear__rash-guard.json"
+  },
+  {
+    "route": "/expertise/swimwear/swim-leggings",
+    "file": "expertise__swimwear__swim-leggings.json"
+  },
+  {
+    "route": "/expertise/swimwear/swim-shirt",
+    "file": "expertise__swimwear__swim-shirt.json"
+  },
+  {
+    "route": "/expertise/swimwear/swim-shorts",
+    "file": "expertise__swimwear__swim-shorts.json"
+  },
+  {
+    "route": "/expertise/swimwear/swim-trunks",
+    "file": "expertise__swimwear__swim-trunks.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-branded-work-t-shirt",
+    "file": "expertise__workwear__custom-branded-work-t-shirt.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-hi-vis-workwear-set",
+    "file": "expertise__workwear__custom-hi-vis-workwear-set.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-high-visibility-safety-jacket",
+    "file": "expertise__workwear__custom-high-visibility-safety-jacket.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-high-visibility-safety-vest",
+    "file": "expertise__workwear__custom-high-visibility-safety-vest.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-medical-scrub-set",
+    "file": "expertise__workwear__custom-medical-scrub-set.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-multi-pocket-work-trousers",
+    "file": "expertise__workwear__custom-multi-pocket-work-trousers.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-professional-chef-jacket",
+    "file": "expertise__workwear__custom-professional-chef-jacket.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-professional-kitchen-apron",
+    "file": "expertise__workwear__custom-professional-kitchen-apron.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-utility-cargo-shorts",
+    "file": "expertise__workwear__custom-utility-cargo-shorts.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-utility-cargo-work-pants",
+    "file": "expertise__workwear__custom-utility-cargo-work-pants.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-utility-work-shirt",
+    "file": "expertise__workwear__custom-utility-work-shirt.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-workwear-bib-overall",
+    "file": "expertise__workwear__custom-workwear-bib-overall.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-workwear-coverall",
+    "file": "expertise__workwear__custom-workwear-coverall.json"
+  },
+  {
+    "route": "/expertise/workwear/custom-zip-polo-shirt",
+    "file": "expertise__workwear__custom-zip-polo-shirt.json"
+  },
+  {
+    "route": "/expertise/workwear",
+    "file": "expertise__workwear.json"
+  },
+  {
+    "route": "/help/payment-information",
+    "file": "help__payment-information.json"
+  },
+  {
+    "route": "/help/privacy-policy",
+    "file": "help__privacy-policy.json"
+  },
+  {
+    "route": "/help/terms-of-services",
+    "file": "help__terms-of-services.json"
+  },
+  {
+    "route": "/help/warranty-and-after-sales",
+    "file": "help__warranty-and-after-sales.json"
+  },
+  {
+    "route": "/",
+    "file": "home.json"
+  },
+  {
+    "route": "/our-expertise",
+    "file": "our-expertise.json"
+  },
+  {
+    "route": "/solutions/manufacturing-solutions",
+    "file": "solutions__manufacturing-solutions.json"
+  },
+  {
+    "route": "/solutions/oem-odm-services",
+    "file": "solutions__oem-odm-services.json"
+  },
+  {
+    "route": "/solutions/production-process",
+    "file": "solutions__production-process.json"
+  }
+]

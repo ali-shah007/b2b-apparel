@@ -3,7 +3,7 @@
  * Framework: GSAP + Lenis Smooth Scroll
  */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.initTASite = () => {
     initGlobalCursor();
     initFixedFooterSpacer();
     initScrollReveal();
@@ -7321,7 +7321,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Below-the-fold sections use natural/lazy loading or local loaders.
         initSitePreloader();
     }
-});
+};
 
 /**
  * Scroll-triggered fade/slide-in reveal for every non-homepage page

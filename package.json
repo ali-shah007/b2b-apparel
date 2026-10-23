@@ -4,11 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node server.mjs",
-    "start": "node server.mjs",
-    "build": "node tools/validate.mjs",
+    "dev": "next dev --hostname 0.0.0.0",
+    "start": "next start --hostname 0.0.0.0",
+    "build": "node tools/validate.mjs && next build",
     "test": "node tools/smoke.mjs"
   },
-  "dependencies": {"gsap": "3.12.5", "lenis": "1.1.18"},
-  "devDependencies": {"playwright": "^1.56.0"}
+  "dependencies": {
+    "@vercel/blob": "^2.8.2",
+    "gsap": "3.12.5",
+    "lenis": "1.1.18",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  }
 }
