@@ -17,7 +17,7 @@ page.setDefaultTimeout(15000);
 const errors=[],bad=[],external=[];
 page.on('pageerror',e=>errors.push(e.message));
 page.on('response',r=>{if(r.status()>=400)bad.push(r.status()+' '+r.url());});
-page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:')&&!r.url().startsWith('blob:')&&!r.url().startsWith('https://www.instagram.com/'))external.push(r.url());});
+page.on('request',r=>{if(!r.url().startsWith(base)&&!r.url().startsWith('data:')&&!r.url().startsWith('blob:'))external.push(r.url());});
 await page.goto(base+'/',{waitUntil:'networkidle'});
 await page.waitForFunction(()=>!document.body.classList.contains('is-preloading'),{timeout:30000});
 await page.screenshot({path:'artifacts/home-desktop.png'});
@@ -30,6 +30,10 @@ for(const route of ['/bespoke-service','/our-expertise','/expertise/streetwear',
  await page.goto(base+route,{waitUntil:'networkidle'});
  await page.waitForTimeout(200);
  assert.ok((await page.locator('body').innerText()).length>200,route);
+ if(route==='/about-us/client-reviews'){
+  assert.equal(await page.locator('.cr-video-card iframe').count(),0);
+  assert.equal(await page.locator('.cr-video-placeholder').count(),7);
+ }
  const broken=await page.locator('img').evaluateAll(imgs=>imgs.filter(img=>img.complete&&img.naturalWidth===0&&img.getAttribute('src')).map(img=>img.src));
  assert.deepEqual(broken,[],route+' broken images');
  if(['/bespoke-service','/expertise/streetwear','/brand-hub/','/contact'].includes(route))await page.screenshot({path:'artifacts/'+route.replaceAll('/','')+'-desktop.png'});
@@ -72,7 +76,7 @@ await browser.close();
 assert.deepEqual(errors,[],'Browser JavaScript errors');
 assert.deepEqual([...new Set(bad)],[],'Failed requests');
 assert.deepEqual([...new Set(external)],[],'Unexpected third-party network dependencies');
-console.log('PASS: no JavaScript errors, failed asset requests or unexpected third-party dependencies; Instagram testimonial embeds are intentional.');
+console.log('PASS: no JavaScript errors, failed asset requests or third-party runtime dependencies.');
 // Remove only inquiries submitted by this test; preserve all customer data and uploads.
 const store='.local/inquiries/requests.jsonl';
 const rows=(await readFile(store,'utf8')).trim().split('\n').filter(Boolean);

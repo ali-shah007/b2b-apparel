@@ -32,7 +32,7 @@ The build validates the local content/assets and creates an optimized Next.js pr
 - `lib/inquiries.js`: shared validation and storage for the route handlers.
 - `public/assets/`: local photographs, apparel images, 1,168 animation frames, fonts, scripts, TA Sports SVG logos and favicon.
 
-Routes include the homepage, bespoke service, all nine apparel categories and their product detail pages, three solutions pages, company pages, contact, four help pages, and the Brand Hub's articles, categories, tags and pagination. `tools/mirror-report.json` records the discovered reference routes. Some trailing-slash URLs refer to the same route. Original CSS class names are retained to preserve the visuals. The seven client-video testimonials keep the reference's Instagram embeds and require Instagram connectivity; core visuals are local.
+Routes include the homepage, bespoke service, all nine apparel categories and their product detail pages, three solutions pages, company pages, contact, four help pages, and the Brand Hub's articles, categories, tags and pagination. `tools/mirror-report.json` records the discovered reference routes. Some trailing-slash URLs refer to the same route. Original CSS class names are retained to preserve the visuals. The seven client-video review slots use local TA Sports placeholders until original client videos are available. No Instagram embeds are loaded.
 
 ## Inquiry storage
 

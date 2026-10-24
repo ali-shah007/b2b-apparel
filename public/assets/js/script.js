@@ -3161,9 +3161,17 @@ window.initTASite = () => {
             if (!scene2Canvas || !scene2Ctx) return;
 
             scene2Ctx.clearRect(0, 0, scene2Canvas.width, scene2Canvas.height);
-            const ratio = scene2Canvas.width / currentImg.width;
-            let centerShiftX = 0;
-            let centerShiftY = (scene2Canvas.height - currentImg.height * ratio) / 2;
+            // Keep the garment clear of the side captions and bottom copy,
+            // including on compact desktops and short landscape screens.
+            const compactLayout = window.innerWidth <= 1100;
+            const availableWidth = scene2Canvas.width * (compactLayout ? 0.65 : 1);
+            const availableHeight = Math.max(1, scene2Canvas.height - 240);
+            const ratio = Math.min(
+                availableWidth / currentImg.width,
+                availableHeight / currentImg.height
+            );
+            let centerShiftX = (scene2Canvas.width - currentImg.width * ratio) / 2;
+            let centerShiftY = 90 + (availableHeight - currentImg.height * ratio) / 2;
 
             // Match Scene 4's endpoint interaction on Scene 2's first and last
             // frames while leaving every in-between scrub frame centered.

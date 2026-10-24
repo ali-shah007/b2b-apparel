@@ -2366,7 +2366,7 @@ body.scene-6-text-in-center #scene-6-scroll-indicator {
 
 @media (max-width: 1100px) {
     .scene-2-info {
-        top: 48%;
+        top: 38%;
         width: min(29vw, 280px);
     }
 

@@ -1,1 +1,13 @@
 .ta-inquiry-note{font:12px/1.6 Roboto,Arial,sans-serif;color:#666;margin-top:14px}.bigbee-logo__img,.bigbee-footer-logo__img{object-fit:contain}.bb-chat__option[data-chat-action="whatsapp"]{display:none}.bb-chat__footer{font-size:12px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+/* Local client-review placeholders, ready for future TA Sports videos. */
+.cr-video-placeholder{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:30px 26px;border-radius:16px;background:radial-gradient(ellipse at 85% 12%,#fff5cb 0,transparent 48%),linear-gradient(145deg,#f6f4ee,#eae7df);color:#272727}
+.cr-video-placeholder__top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cr-video-placeholder__top img{display:block;width:132px;height:auto;object-fit:contain}
+.cr-video-placeholder__top>span{font:500 11px/1 var(--bb-font-body);letter-spacing:.12em;color:#77736a;white-space:nowrap}
+.cr-video-placeholder__content{display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 0}
+.cr-video-placeholder__quote{display:grid;place-items:center;width:100px;height:100px;border-radius:50%;background:#ffc116;color:#272727;font:650 116px/1 var(--bb-font-display);padding-top:24px;margin-bottom:30px;box-shadow:0 18px 35px #b89d3626}
+.cr-video-placeholder__badge{font:650 10px/1 var(--bb-font-display);letter-spacing:.16em;text-transform:uppercase;padding:9px 12px;border:1px solid #cbc6b6;border-radius:30px;color:#615b4b}
+.cr-video-placeholder h3{font:600 clamp(1.5rem,2.1vw,2rem)/1.06 var(--bb-font-display);letter-spacing:-.035em;margin:20px 0 14px}
+.cr-video-placeholder__content p{max-width:230px;margin:0;color:#77736a;font:400 13px/1.65 var(--bb-font-body)}
+.cr-video-placeholder__footer{margin:0;padding-top:18px;border-top:1px solid #d6d1c4;color:#77736a;font:500 9px/1.5 var(--bb-font-body);letter-spacing:.12em;text-align:center}
+@media(max-width:600px){.cr-video-placeholder{padding:24px 20px}.cr-video-placeholder__quote{width:88px;height:88px;font-size:100px}.cr-video-placeholder h3{font-size:1.8rem}}
