@@ -25,6 +25,11 @@ assert.equal(await page.locator('.bigbee-logo__img').first().getAttribute('src')
 for(let i=0;i<12;i++){await page.mouse.wheel(0,500);await page.waitForTimeout(400);}
 assert.ok(await page.evaluate(()=>window.scene2Images?.filter(i=>i.complete&&i.naturalWidth>0).length===129),'All scene 2 frames loaded');
 assert.ok(await page.locator('#scene-2-canvas').evaluate(c=>{const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;for(let i=3;i<d.length;i+=400)if(d[i]>0)return true;return false;}),'Animation canvas rendered image pixels');
+await page.waitForTimeout(800);
+const beforeTrackpad=await page.locator('#scene-2-canvas').evaluate(c=>c.toDataURL());
+for(let i=0;i<100;i++){await page.mouse.wheel(0,2);await page.waitForTimeout(10);}
+await page.waitForTimeout(800);
+assert.notEqual(await page.locator('#scene-2-canvas').evaluate(c=>c.toDataURL()),beforeTrackpad,'Small laptop trackpad deltas advance the animation');
 await page.screenshot({path:'artifacts/home-animation.png'});
 for(const route of ['/bespoke-service','/our-expertise','/expertise/streetwear','/expertise/activewear','/expertise/sportswear','/expertise/outerwear','/expertise/workwear','/expertise/leather-wear','/expertise/swimwear','/expertise/accessories','/expertise/denim-wear','/solutions/production-process','/solutions/manufacturing-solutions','/solutions/oem-odm-services','/about-us','/about-us/client-reviews','/about-us/sustainability','/brand-hub/','/brand-hub/page/2/','/help/privacy-policy','/contact']){
  await page.goto(base+route,{waitUntil:'networkidle'});

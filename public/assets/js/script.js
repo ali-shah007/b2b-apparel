@@ -2742,7 +2742,10 @@ window.initTASite = () => {
 
     if (!mobileStaticHomepage) {
         window.addEventListener("wheel", (e) => {
-            if (Math.abs(e.deltaY) > 5) {
+            // Precision trackpads emit small pixel deltas (and Firefox can emit
+            // single-line deltas). Keep them: the scrubber normalizes units.
+            // Ctrl+wheel belongs to browser zoom / trackpad pinch gestures.
+            if (!e.ctrlKey && Number.isFinite(e.deltaY) && e.deltaY !== 0) {
                 if (e.deltaY > 0) {
                     transitionBetweenHeroScenes("down", e);
                 } else if (e.deltaY < 0) {
